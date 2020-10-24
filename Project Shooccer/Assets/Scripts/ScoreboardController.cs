@@ -108,6 +108,7 @@ public class ScoreboardController : MonoBehaviour
 
     private void Goal()
     {
+        MatchController.GetInstance().Playing = false;
         MatchController.GetInstance().Time = _time;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

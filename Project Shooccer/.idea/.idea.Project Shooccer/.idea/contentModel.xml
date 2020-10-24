@@ -12,6 +12,7 @@
         <e p="Scripts" t="Include">
           <e p="Bullet.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
+          <e p="Goal.cs" t="Include" />
           <e p="MatchController.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="ScoreboardController.cs" t="Include" />

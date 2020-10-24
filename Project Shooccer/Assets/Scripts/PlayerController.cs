@@ -14,10 +14,14 @@ using Object = System.Object;
 
 public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 {
-    private float _yaw;
-    private float _pitch;
+    private Camera _camera;
 
+    [Header("Character Controller General")]
+    private float _yaw;
+
+    private float _pitch;
     [SerializeField] private float yawRotationalSpeed = 360f;
+
     [SerializeField] private float pitchRotationalSpeed = 180f;
     [SerializeField] private float minPitch = -80f;
     [SerializeField] private float maxPitch = 50f;
@@ -37,22 +41,30 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 
     private int _yawInversion = 1;
 
-    private bool _stopTime;
+    [Header("Player Specs")] [SerializeField]
+    private float ballInfluenceMultiplier;
 
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private float movementSpeedMultiplier;
+    [SerializeField] private float jumpHeightMultiplier;
+    [SerializeField] private float bulletDistanceMultiplier;
+    [SerializeField] private float bulletAccuracyMultiplier;
+    [SerializeField] private float aimSpeed;
+    [SerializeField] private float fireRate;
 
+    [Header("Shoot")] [SerializeField] private LayerMask shootLayerMask;
+
+    [SerializeField] private float maxDistance;
+    [SerializeField] float ballForce = 500;
     [SerializeField] private Transform bulletInstantiatePosition;
-    private Camera _camera;
 
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        _camera = Camera.main;
-    }
+    [Header("Aim")] [SerializeField] private int normalFov = 60;
+    [SerializeField] private int aimFov = 40;
+    
 
     void Awake()
     {
+        Debug.Log(Camera.main);
+        _camera = Camera.main;
         _simpleControls = new SimpleControls();
         _simpleControls.gameplay.SetCallbacks(this);
         _simpleControls.gameplay.Enable();
@@ -104,15 +116,13 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
                 movement -= right;
 
             movement.Normalize();
-            movement = movement * Time.deltaTime * speed;
+            movement *= (Time.deltaTime * speed);
 
             //Gravity
             _verticalSpeed += (Physics.gravity.y * 1.5f) * Time.deltaTime;
             movement.y = _verticalSpeed * Time.deltaTime;
 
-            float lSpeedMultiplier = 1f;
-
-            movement *= Time.deltaTime * speed * lSpeedMultiplier;
+            movement *= Time.deltaTime * speed * movementSpeedMultiplier;
             CollisionFlags collisionFlags = _characterController.Move(movement);
             if (_yawInversion == 1)
             {
@@ -147,25 +157,36 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     {
         if (MatchController.GetInstance().Playing)
         {
-            GameObject instantiatedBullet = Instantiate(bullet, bulletInstantiatePosition);
-            instantiatedBullet.transform.forward = Camera.main.transform.forward;
-            instantiatedBullet.transform.parent = null;
-            instantiatedBullet.GetComponent<Bullet>().Speed = 100;
+            Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
+            RaycastHit raycastHit;
+            if (Physics.Raycast(cameraRay, out raycastHit, maxDistance * bulletDistanceMultiplier,
+                shootLayerMask.value))
+                switch (raycastHit.collider.tag)
+                {
+                    case "Ball":
+                        MoveBall(raycastHit.collider.gameObject.GetComponent<Rigidbody>(),raycastHit.point);
+                        break;
+                }
         }
+    }
+
+    private void MoveBall(Rigidbody ball,Vector3 hitPoint)
+    {
+        ball.AddExplosionForce(ballForce * ballInfluenceMultiplier, hitPoint, 1f);
     }
 
     public void Aim()
     {
-        _camera.fieldOfView = Mathf.Max(40, _camera.fieldOfView  - 75 * Time.deltaTime);
-        
-        if (_camera.fieldOfView  == 40)
+        _camera.fieldOfView = Mathf.Max(aimFov, _camera.fieldOfView - 75 * Time.deltaTime*aimSpeed);
+
+        if (_camera.fieldOfView == aimFov)
             CancelInvoke("Aim");
     }
 
     public void Deaim()
     {
-        _camera.fieldOfView  = Mathf.Min(60, _camera.fieldOfView  + 75 * Time.deltaTime);
-        if (_camera.fieldOfView  == 60)
+        _camera.fieldOfView = Mathf.Min(normalFov, _camera.fieldOfView + 75 * Time.deltaTime*aimSpeed);
+        if (_camera.fieldOfView == normalFov)
             CancelInvoke("Deaim");
     }
 
@@ -184,7 +205,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     public void OnJump(InputAction.CallbackContext context)
     {
         if (_onGround && context.performed)
-            _verticalSpeed = jumpSpeed;
+            _verticalSpeed = jumpSpeed * jumpHeightMultiplier;
     }
 
     public void OnFire(InputAction.CallbackContext context)
