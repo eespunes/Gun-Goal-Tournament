@@ -42,9 +42,15 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     [SerializeField] private GameObject bullet;
 
     [SerializeField] private Transform bulletInstantiatePosition;
+    private Camera _camera;
 
 
     // Start is called before the first frame update
+    private void Start()
+    {
+        _camera = Camera.main;
+    }
+
     void Awake()
     {
         _simpleControls = new SimpleControls();
@@ -78,75 +84,90 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
         float mouseAxisX = _yawInversion * _lookInput.x;
         _yaw += mouseAxisX * yawRotationalSpeed * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(0, _yaw, 0);
-        //Movement
-        Vector3 movement = new Vector3(0, 0, 0);
-        float yawInRadians = _yaw * Mathf.Deg2Rad;
-        float yaw90InRadians = (_yaw + 90.0f) * Mathf.Deg2Rad;
-        Vector3 forward = new Vector3(Mathf.Sin(yawInRadians), 0.0f, Mathf.Cos(yawInRadians));
-        Vector3 right = new Vector3(Mathf.Sin(yaw90InRadians), 0.0f, Mathf.Cos(yaw90InRadians));
-        if (_moveInput.y > 0)
-            movement = forward;
-        else if (_moveInput.y < 0)
-            movement = -forward;
 
-        if (_moveInput.x > 0)
-            movement += right;
-        else if (_moveInput.x < 0)
-            movement -= right;
-
-        movement.Normalize();
-        movement = movement * Time.deltaTime * speed;
-
-        //Gravity
-        _verticalSpeed += (Physics.gravity.y * 1.5f) * Time.deltaTime;
-        movement.y = _verticalSpeed * Time.deltaTime;
-
-        float lSpeedMultiplier = 1f;
-
-        movement *= Time.deltaTime * speed * lSpeedMultiplier;
-
-        CollisionFlags collisionFlags = _characterController.Move(movement);
-        if (_yawInversion == 1)
+        if (MatchController.GetInstance().Playing)
         {
-            if ((collisionFlags & CollisionFlags.Below) != 0)
+            //Movement
+            Vector3 movement = new Vector3(0, 0, 0);
+            float yawInRadians = _yaw * Mathf.Deg2Rad;
+            float yaw90InRadians = (_yaw + 90.0f) * Mathf.Deg2Rad;
+            Vector3 forward = new Vector3(Mathf.Sin(yawInRadians), 0.0f, Mathf.Cos(yawInRadians));
+            Vector3 right = new Vector3(Mathf.Sin(yaw90InRadians), 0.0f, Mathf.Cos(yaw90InRadians));
+            if (_moveInput.y > 0)
+                movement = forward;
+            else if (_moveInput.y < 0)
+                movement = -forward;
+
+            if (_moveInput.x > 0)
+                movement += right;
+            else if (_moveInput.x < 0)
+                movement -= right;
+
+            movement.Normalize();
+            movement = movement * Time.deltaTime * speed;
+
+            //Gravity
+            _verticalSpeed += (Physics.gravity.y * 1.5f) * Time.deltaTime;
+            movement.y = _verticalSpeed * Time.deltaTime;
+
+            float lSpeedMultiplier = 1f;
+
+            movement *= Time.deltaTime * speed * lSpeedMultiplier;
+            CollisionFlags collisionFlags = _characterController.Move(movement);
+            if (_yawInversion == 1)
             {
-                _onGround = true;
-                _verticalSpeed = 0.0f;
+                if ((collisionFlags & CollisionFlags.Below) != 0)
+                {
+                    _onGround = true;
+                    _verticalSpeed = 0.0f;
+                }
+                else
+                    _onGround = false;
+
+                if ((collisionFlags & CollisionFlags.Above) != 0 && _verticalSpeed > 0.0f)
+                    _verticalSpeed = 0.0f;
             }
             else
-                _onGround = false;
-
-            if ((collisionFlags & CollisionFlags.Above) != 0 && _verticalSpeed > 0.0f)
-                _verticalSpeed = 0.0f;
-        }
-        else
-        {
-            if ((collisionFlags & CollisionFlags.Above) != 0)
             {
-                _onGround = true;
-                _verticalSpeed = 0.0f;
-            }
-            else
-                _onGround = false;
+                if ((collisionFlags & CollisionFlags.Above) != 0)
+                {
+                    _onGround = true;
+                    _verticalSpeed = 0.0f;
+                }
+                else
+                    _onGround = false;
 
-            if ((collisionFlags & CollisionFlags.Below) != 0 && _verticalSpeed > 0.0f)
-                _verticalSpeed = 0.0f;
+                if ((collisionFlags & CollisionFlags.Below) != 0 && _verticalSpeed > 0.0f)
+                    _verticalSpeed = 0.0f;
+            }
         }
     }
 
     private void Shoot()
     {
-        GameObject instantiatedBullet = Instantiate(bullet, bulletInstantiatePosition);
-        instantiatedBullet.transform.forward = Camera.main.transform.forward;
-        instantiatedBullet.transform.parent = null;
-        instantiatedBullet.GetComponent<Bullet>().Speed = 100;
+        if (MatchController.GetInstance().Playing)
+        {
+            GameObject instantiatedBullet = Instantiate(bullet, bulletInstantiatePosition);
+            instantiatedBullet.transform.forward = Camera.main.transform.forward;
+            instantiatedBullet.transform.parent = null;
+            instantiatedBullet.GetComponent<Bullet>().Speed = 100;
+        }
     }
 
-
-    private void Aim()
+    public void Aim()
     {
+        _camera.fieldOfView = Mathf.Max(40, _camera.fieldOfView  - 75 * Time.deltaTime);
+        
+        if (_camera.fieldOfView  == 40)
+            CancelInvoke("Aim");
     }
 
+    public void Deaim()
+    {
+        _camera.fieldOfView  = Mathf.Min(60, _camera.fieldOfView  + 75 * Time.deltaTime);
+        if (_camera.fieldOfView  == 60)
+            CancelInvoke("Deaim");
+    }
 
     #region Input
 
@@ -175,7 +196,15 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     public void OnAim(InputAction.CallbackContext context)
     {
         if (context.performed)
-            Aim();
+        {
+            CancelInvoke("Deaim");
+            InvokeRepeating("Aim", 0, Time.deltaTime);
+        }
+        else if (context.canceled)
+        {
+            CancelInvoke("Aim");
+            InvokeRepeating("Deaim", 0, Time.deltaTime);
+        }
     }
 
     #endregion
