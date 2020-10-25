@@ -10,6 +10,8 @@
           <e p="SimpleControls.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="AIController.cs" t="Include" />
+          <e p="Ball.cs" t="Include" />
           <e p="Bullet.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="Goal.cs" t="Include" />

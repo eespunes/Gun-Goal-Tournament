@@ -31,46 +31,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ae08af0-2feb-49bb-9962-ae82f6fc5c0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Goal.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Goal.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Net.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Net.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Meshes/Player.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Meshes/Player.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProBuilder Data.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProBuilder Data/Default Color Palette.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProBuilder Data/Default Color Palette.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProBuilder Data/Default Material Palette.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProBuilder Data/Default Material Palette.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/.sample.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Material.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Shader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Shader/Standard Vertex Color.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Shader/Standard Vertex Color.shadergraph.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Goal.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Goal.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Ball.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Ball.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/net.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/net.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/Ball.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Ball.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Goal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Goal.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Player.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/pitch.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/pitch.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Meshes/Goal.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Goal.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Arena.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Arena.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Player.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Player.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Player.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Player.fbx.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +70,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Scoreboard/Scoreboard/Assets/Scripts/Scoreboard/MatchController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../LudumDare 47/Project Space/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MatchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3/Runtime/Behaviours/CinemachineBrain.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -98,6 +83,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MatchController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Goal.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
       </list>
     </option>
@@ -145,6 +132,7 @@
       <workItem from="1603528227470" duration="7206000" />
       <workItem from="1603555853216" duration="4338000" />
       <workItem from="1603578067112" duration="1036000" />
+      <workItem from="1603626456358" duration="11009000" />
     </task>
     <servers />
   </component>

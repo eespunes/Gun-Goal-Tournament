@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     [Header("Shoot")] [SerializeField] private LayerMask shootLayerMask;
 
     [SerializeField] private float maxDistance;
-    [SerializeField] float ballForce = 500;
     [SerializeField] private Transform bulletInstantiatePosition;
 
     [Header("Aim")] [SerializeField] private int normalFov = 60;
@@ -86,7 +85,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     private void Movement()
     {
         //Pitch
-        float mouseAxisY = -_lookInput.y;
+        float mouseAxisY = _lookInput.y;
         _pitch += mouseAxisY * pitchRotationalSpeed * Time.deltaTime;
         _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
         pitchControllerTransform.localRotation = Quaternion.Euler(_pitch, 0, 0);
@@ -164,15 +163,10 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
                 switch (raycastHit.collider.tag)
                 {
                     case "Ball":
-                        MoveBall(raycastHit.collider.gameObject.GetComponent<Rigidbody>(),raycastHit.point);
+                        raycastHit.collider.GetComponent<Ball>().MoveBall(raycastHit.point,ballInfluenceMultiplier);
                         break;
                 }
         }
-    }
-
-    private void MoveBall(Rigidbody ball,Vector3 hitPoint)
-    {
-        ball.AddExplosionForce(ballForce * ballInfluenceMultiplier, hitPoint, 1f);
     }
 
     public void Aim()
