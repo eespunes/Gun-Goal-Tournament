@@ -234,14 +234,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2176952143116317106}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 100, y: 1.1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4136489732045087842}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &919255971020377828
 CharacterController:
   m_ObjectHideFlags: 0
@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cf683eb535e09488a355080b90bdbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 3860791890595012470}
   yawRotationalSpeed: 360
   pitchRotationalSpeed: 180
   minPitch: -60
@@ -286,14 +287,17 @@ MonoBehaviour:
   bulletAccuracyMultiplier: 1
   aimSpeed: 1
   fireRate: 1
+  automaticWeapon: 0
   shootLayerMask:
     serializedVersion: 2
     m_Bits: 256
   maxDistance: 100
-  ballForce: 500
   bulletInstantiatePosition: {fileID: 1929736285360627239}
+  impactObject: {fileID: 8261382636396744410, guid: 8de9a9f285f1b4d46b6abba7069f0539, type: 3}
+  fireFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
   normalFov: 60
   aimFov: 40
+  isHome: 0
 --- !u!1 &2742857826656106781
 GameObject:
   m_ObjectHideFlags: 0

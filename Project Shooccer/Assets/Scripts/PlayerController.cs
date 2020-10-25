@@ -14,7 +14,7 @@ using Object = System.Object;
 
 public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 {
-    private Camera _camera;
+    [SerializeField] private Camera _camera;
 
     [Header("Character Controller General")]
     private float _yaw;
@@ -50,21 +50,26 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     [SerializeField] private float bulletAccuracyMultiplier;
     [SerializeField] private float aimSpeed;
     [SerializeField] private float fireRate;
+    [SerializeField] private bool automaticWeapon;
 
     [Header("Shoot")] [SerializeField] private LayerMask shootLayerMask;
 
     [SerializeField] private float maxDistance;
     [SerializeField] private Transform bulletInstantiatePosition;
 
+    [SerializeField] private GameObject impactObject;
+    [SerializeField] private GameObject fireFlash;
+
     [Header("Aim")] [SerializeField] private int normalFov = 60;
     [SerializeField] private int aimFov = 40;
-    
+
+    [HideInInspector] public bool isHome;
+
 
     void Awake()
     {
-        Debug.Log(Camera.main);
-        _camera = Camera.main;
         _simpleControls = new SimpleControls();
+
         _simpleControls.gameplay.SetCallbacks(this);
         _simpleControls.gameplay.Enable();
 
@@ -73,7 +78,12 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
         _characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GameController.GetInstance().PlayerController = this;
+    }
+
+    public void Init()
+    {
+        if (MatchController.GetInstance().SplitScreen)
+            _camera.rect = new Rect(isHome ? _camera.rect.x : .5f, _camera.rect.y, .5f, _camera.rect.height);
     }
 
     // Update is called once per frame
@@ -84,20 +94,19 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 
     private void Movement()
     {
-        //Pitch
-        float mouseAxisY = _lookInput.y;
-        _pitch += mouseAxisY * pitchRotationalSpeed * Time.deltaTime;
-        _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
-        pitchControllerTransform.localRotation = Quaternion.Euler(_pitch, 0, 0);
-
-
-        //Yaw
-        float mouseAxisX = _yawInversion * _lookInput.x;
-        _yaw += mouseAxisX * yawRotationalSpeed * Time.deltaTime;
-        transform.localRotation = Quaternion.Euler(0, _yaw, 0);
-
         if (MatchController.GetInstance().Playing)
         {
+            //Pitch
+            float mouseAxisY = _lookInput.y;
+            _pitch += mouseAxisY * pitchRotationalSpeed * Time.deltaTime;
+            _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+            pitchControllerTransform.localRotation = Quaternion.Euler(_pitch, 0, 0);
+
+
+            //Yaw
+            float mouseAxisX = _yawInversion * _lookInput.x;
+            _yaw += mouseAxisX * yawRotationalSpeed * Time.deltaTime;
+            transform.localRotation = Quaternion.Euler(0, _yaw, 0);
             //Movement
             Vector3 movement = new Vector3(0, 0, 0);
             float yawInRadians = _yaw * Mathf.Deg2Rad;
@@ -158,20 +167,26 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
         {
             Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
             RaycastHit raycastHit;
+            Instantiate(fireFlash, bulletInstantiatePosition);
             if (Physics.Raycast(cameraRay, out raycastHit, maxDistance * bulletDistanceMultiplier,
                 shootLayerMask.value))
+            {
+                GameObject go = Instantiate(impactObject, raycastHit.transform);
+                go.transform.forward = raycastHit.normal;
+                go.transform.position = raycastHit.point;
                 switch (raycastHit.collider.tag)
                 {
                     case "Ball":
-                        raycastHit.collider.GetComponent<Ball>().MoveBall(raycastHit.point,ballInfluenceMultiplier);
+                        raycastHit.collider.GetComponent<Ball>().MoveBall(raycastHit.point, ballInfluenceMultiplier);
                         break;
                 }
+            }
         }
     }
 
     public void Aim()
     {
-        _camera.fieldOfView = Mathf.Max(aimFov, _camera.fieldOfView - 75 * Time.deltaTime*aimSpeed);
+        _camera.fieldOfView = Mathf.Max(aimFov, _camera.fieldOfView - 75 * Time.deltaTime * aimSpeed);
 
         if (_camera.fieldOfView == aimFov)
             CancelInvoke("Aim");
@@ -179,7 +194,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 
     public void Deaim()
     {
-        _camera.fieldOfView = Mathf.Min(normalFov, _camera.fieldOfView + 75 * Time.deltaTime*aimSpeed);
+        _camera.fieldOfView = Mathf.Min(normalFov, _camera.fieldOfView + 75 * Time.deltaTime * aimSpeed);
         if (_camera.fieldOfView == normalFov)
             CancelInvoke("Deaim");
     }
@@ -205,7 +220,14 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     public void OnFire(InputAction.CallbackContext context)
     {
         if (context.performed)
-            Shoot();
+        {
+            if (automaticWeapon)
+                InvokeRepeating(nameof(Shoot), 0, .25f * fireRate);
+            else
+                Shoot();
+        }
+        else if (context.canceled)
+            CancelInvoke(nameof(Shoot));
     }
 
     public void OnAim(InputAction.CallbackContext context)

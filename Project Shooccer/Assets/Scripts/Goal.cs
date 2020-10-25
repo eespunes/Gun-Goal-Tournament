@@ -21,8 +21,17 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag.Equals("Ball"))
-           if(isHome) MatchController.GetInstance().AwayGoal();
+        if (other.tag.Equals("Ball"))
+        {
+            Invoke("GoalAnimation", 2f);
+        }
+    }
+
+    private void GoalAnimation()
+    {
+        // Timekeeper.instance.Clock("Root").localTimeScale = -1;
+        MatchController.GetInstance().Playing = false;
+        if (isHome) MatchController.GetInstance().AwayGoal();
         else MatchController.GetInstance().HomeGoal();
     }
 }
