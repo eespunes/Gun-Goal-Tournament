@@ -169,7 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHome: 1
   camera: {fileID: 0}
-  goalLine: {fileID: 1957533706}
 --- !u!65 &450244372
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -375,8 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9c75b3ce144dd897d4904699a7625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fps: 60
-  time: 15
+  fps: 30
+  time: 10
 --- !u!4 &1046375956
 Transform:
   m_ObjectHideFlags: 0
@@ -1008,7 +1007,7 @@ PrefabInstance:
     - target: {fileID: 609276361302364982, guid: 905534f032b9a264982ea01fe72d3aad, type: 3}
       propertyPath: camera
       value: 
-      objectReference: {fileID: 966638255}
+      objectReference: {fileID: 2026513066}
     - target: {fileID: 712107465157891053, guid: 905534f032b9a264982ea01fe72d3aad, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2888,7 +2887,7 @@ PrefabInstance:
     - target: {fileID: 1864068498970539342, guid: 905534f032b9a264982ea01fe72d3aad, type: 3}
       propertyPath: camera
       value: 
-      objectReference: {fileID: 2026513066}
+      objectReference: {fileID: 966638255}
     - target: {fileID: 2838312717748197477, guid: 905534f032b9a264982ea01fe72d3aad, type: 3}
       propertyPath: m_Layer
       value: 8
