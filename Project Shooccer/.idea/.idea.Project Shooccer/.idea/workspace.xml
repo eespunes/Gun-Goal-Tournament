@@ -31,31 +31,177 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ae08af0-2feb-49bb-9962-ae82f6fc5c0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReplayBuffer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReplayBuffer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReplayManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ReplayManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ball.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Ball.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Goal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Goal.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Player.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Player.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/pitch.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/pitch.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Goal.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Goal.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Player.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Player.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Meshes/Player.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Meshes/Player.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HitParticle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/HitParticle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MuzzleFlash01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MuzzleFlash01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player (AI).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player (AI).prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/.sample.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Material.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Shader/Standard Vertex Color.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/4.4.0/Universal Render Pipeline Support/Shader/Standard Vertex Color.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Match.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Match.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Porteria.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Porteria.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DestroyParticles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DestroyParticles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Goal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Goal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InstantiatePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InstantiatePlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Goal_diff.psd.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/ConcreteFloor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/ConcreteFloor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/ConcreteWall.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/ConcreteWall.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/Light.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/Light.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/LinesWhite.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/LinesWhite.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/MetalRailing.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/MetalRailing.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/MetalTrim.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/MetalTrim.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/ShadowCaster.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/ShadowCaster.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/Skybox.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/Skybox.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/UnityLogo.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Materials/UnityLogo.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/AreaLine.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/AreaLine.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/CornerWall.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/CornerWall.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/EndWall.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/EndWall.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorLong.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorLong.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorMiddle.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorMiddle.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorShort.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorShort.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorTiny.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/FloorTiny.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/LongOverhangWall.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/LongOverhangWall.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/Railing.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/Railing.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/SideWall.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/SideWall.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/SmallLight.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/SmallLight.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/Stairs.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/Stairs.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/Step.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Models/Step.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/CornerWall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/CornerWall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/EndWall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/EndWall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorLong.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorLong.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorMiddle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorMiddle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorShort.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorShort.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorTiny.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/FloorTiny.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/LongOverhangWall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/LongOverhangWall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/Railing.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/Railing.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/SideWall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/SideWall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/SmallLight.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/SmallLight.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/Stairs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/Stairs.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/Step.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Prefabs/Step.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_Albedo.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_Albedo.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_AmbientOcclusion.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_AmbientOcclusion.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_MetallicSmooth.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_MetallicSmooth.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_Normal.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteFloor_Normal.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_Albedo.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_Albedo.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_AmbientOcclusion.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_AmbientOcclusion.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_MetallicSmooth.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_MetallicSmooth.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_normal.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/ConcreteWall_normal.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/MetalTrim_Albedo.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/MetalTrim_Albedo.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/MetalTrim_MetallicSmooth.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/MetalTrim_MetallicSmooth.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/MetalTrim_Normal.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/MetalTrim_Normal.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/PaintLines_Albedo.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/PaintLines_Albedo.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/PaintLines_normal.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Environment/Textures/PaintLines_normal.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/Player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/WorldSpaceLabel.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Prefabs/WorldSpaceLabel.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/Editor/RampAssetEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/Editor/RampAssetEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/RampBaker.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/RampBaker.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/Runtime/RampAsset.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Ramps/Runtime/RampAsset.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/AdjustTimeScale.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/AdjustTimeScale.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/ProximityActivate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/ProximityActivate.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/SimpleCameraController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/SimpleCameraController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/SimpleCharacterMotor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/SimpleCharacterMotor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Sprites.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Sprites/Info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Sprites/Info.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Sprites/TitleBorder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Sprites/TitleBorder.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Sprites/UnityLogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Sprites/UnityLogo.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/Help_Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/Help_Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/ReadmeLogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Icons/ReadmeLogo.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TutorialInfo/Scripts/Readme.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,25 +213,36 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Goal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Scoreboard/Scoreboard/Assets/Scripts/Scoreboard/MatchController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../LudumDare 47/Project Space/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MatchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/05250243-5982-472D-92DA-7F939C7F8164/37/6e0011e6/RuntimeInitializeLoadType.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MatchController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Goal.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/A.cs" />
+        <option value="$PROJECT_DIR$/Assets/Ludiq/Ludiq.Chronos/Source/RecorderTimeline.cs" />
+        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugUpdater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainMenuController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MatchController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InstantiatePlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AIController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DestroyParticles.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReplayManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Goal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReplayBuffer.cs" />
       </list>
     </option>
   </component>
@@ -132,7 +289,8 @@
       <workItem from="1603528227470" duration="7206000" />
       <workItem from="1603555853216" duration="4338000" />
       <workItem from="1603578067112" duration="1036000" />
-      <workItem from="1603626456358" duration="11009000" />
+      <workItem from="1603626456358" duration="21837000" />
+      <workItem from="1603705278703" duration="7595000" />
     </task>
     <servers />
   </component>
@@ -157,9 +315,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1084" y="213" key="RiderGenerateDialog" timestamp="1603530167070">
+    <state x="1084" y="213" key="RiderGenerateDialog" timestamp="1603712135290">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1084" y="213" key="RiderGenerateDialog/0.0.2560.1080/-1920.0.1920.1080@0.0.2560.1080" timestamp="1603530167070" />
+    <state x="1084" y="213" key="RiderGenerateDialog/0.0.2560.1080/-1920.0.1920.1080@0.0.2560.1080" timestamp="1603712135290" />
   </component>
 </project>

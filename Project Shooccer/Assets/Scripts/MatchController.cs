@@ -9,6 +9,7 @@
     public bool Playing { get; set; }
 
     public ScoreboardController ScoreboardController { private get; set; }
+    public bool SplitScreen { get; set; }
 
 
     private MatchController()
