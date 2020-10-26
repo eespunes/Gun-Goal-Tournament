@@ -27,7 +27,12 @@ public class InstantiatePlayer : MonoBehaviour
                 go.GetComponent<PlayerController>().Init();
             }
             else
-                Instantiate(ai, transform).transform.parent = null;
+            {
+                GameObject go = Instantiate(ai, transform);
+                go.transform.parent = null;
+                go.GetComponent<AIController>().isHome = false;
+                go.GetComponent<AIController>().Init();
+            }
         }
 
         Destroy(gameObject);

@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 1584453551066369476}
   - component: {fileID: 919255971020377828}
   - component: {fileID: 1671787975496927617}
+  - component: {fileID: 9130062858254567086}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -287,7 +288,7 @@ MonoBehaviour:
   bulletAccuracyMultiplier: 1
   aimSpeed: 1
   fireRate: 1
-  automaticWeapon: 0
+  automaticWeapon: 1
   shootLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -298,6 +299,18 @@ MonoBehaviour:
   normalFov: 60
   aimFov: 40
   isHome: 0
+--- !u!114 &9130062858254567086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176952143116317106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e4d7944801417f8b6da05dc6b0a2d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2742857826656106781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,6 +1032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
+--- !u!4 &1542461258175919816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6085886658039450303, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
+  m_PrefabInstance: {fileID: 4534414556241609609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2443763726319682307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2235056635022229642, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
@@ -1027,10 +1045,5 @@ Transform:
 --- !u!4 &4136489732045087842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
-  m_PrefabInstance: {fileID: 4534414556241609609}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1542461258175919816 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6085886658039450303, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
   m_PrefabInstance: {fileID: 4534414556241609609}
   m_PrefabAsset: {fileID: 0}

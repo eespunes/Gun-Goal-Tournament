@@ -86,6 +86,11 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
             _camera.rect = new Rect(isHome ? _camera.rect.x : .5f, _camera.rect.y, .5f, _camera.rect.height);
     }
 
+    private void OnDestroy()
+    {
+        _simpleControls.Dispose();
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -171,15 +176,29 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
             if (Physics.Raycast(cameraRay, out raycastHit, maxDistance * bulletDistanceMultiplier,
                 shootLayerMask.value))
             {
-                GameObject go = Instantiate(impactObject, raycastHit.transform);
-                go.transform.forward = raycastHit.normal;
-                go.transform.position = raycastHit.point;
+                GenerateShootParticles(raycastHit);
                 switch (raycastHit.collider.tag)
                 {
                     case "Ball":
                         raycastHit.collider.GetComponent<Ball>().MoveBall(raycastHit.point, ballInfluenceMultiplier);
                         break;
                 }
+            }
+        }
+    }
+
+    private void GenerateShootParticles(RaycastHit raycastHit)
+    {
+        GameObject go = Instantiate(impactObject, raycastHit.transform);
+        go.transform.parent = null;
+        go.transform.forward = raycastHit.normal;
+        go.transform.position = raycastHit.point;
+
+        foreach (Transform child in go.transform)
+        {
+            if (child.GetComponent<DestroyParticles>())
+            {
+                child.parent = raycastHit.transform;
             }
         }
     }
