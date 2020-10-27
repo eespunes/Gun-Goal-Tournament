@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     [SerializeField] private GameObject fireFlash;
     private int _currentAmmo;
     private int _totalAmmo;
+    [SerializeField] private int _maxAmmo;
 
     [Header("Aim")] [SerializeField] private int normalFov = 60;
     [SerializeField] private int aimFov = 40;
@@ -253,6 +254,16 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
         _camera.fieldOfView = Mathf.Min(normalFov, _camera.fieldOfView + 75 * Time.deltaTime * aimSpeed);
         if (_camera.fieldOfView == normalFov)
             CancelInvoke("Deaim");
+    }
+
+    public void addAmmo(int quantity)
+    {
+        Debug.Log(_totalAmmo+"  -  "+_maxAmmo+"  -  "+_currentAmmo);
+        _totalAmmo += quantity;
+        if (_totalAmmo > _maxAmmo)
+            _totalAmmo = _maxAmmo;
+        totalAmmoText.text = _totalAmmo.ToString();
+        Debug.Log(_totalAmmo+"  -  "+_maxAmmo+"  -  "+_currentAmmo);
     }
 
     #region Input
