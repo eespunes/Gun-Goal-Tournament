@@ -2,23 +2,11 @@ fileFormatVersion: 2
 guid: 026d1bb5526115143af82cb9128c3d36
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Goal
-    second: {fileID: 2100000, guid: a9356bc845ad5e645b6ceaac89ba18f9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: OuterPitch
-    second: {fileID: 2100000, guid: ce31b5750334e9d40a83a440592d693e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pitch
-    second: {fileID: 2100000, guid: 0f3bc31247c263342b2d09bca728496e, type: 2}
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
