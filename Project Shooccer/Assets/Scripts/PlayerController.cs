@@ -16,11 +16,12 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 {
     [SerializeField] private Camera _camera;
 
-    [Header("Character Controller General")]
     private float _yaw;
 
     private float _pitch;
-    [SerializeField] private float yawRotationalSpeed = 360f;
+
+    [Header("Character Controller General")] [SerializeField]
+    private float yawRotationalSpeed = 360f;
 
     [SerializeField] private float pitchRotationalSpeed = 180f;
     [SerializeField] private float minPitch = -80f;
@@ -64,6 +65,13 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     [SerializeField] private int aimFov = 40;
 
     [HideInInspector] public bool isHome;
+
+    [Header("Animation")] [SerializeField] private Animator animator;
+    private static readonly int IsShooting = Animator.StringToHash("isShooting");
+    private static readonly int IsAiming = Animator.StringToHash("isAiming");
+    private static readonly int IsJumping = Animator.StringToHash("isJumping");
+    private static readonly int MovementX = Animator.StringToHash("movementX");
+    private static readonly int MovementY = Animator.StringToHash("movementY");
 
 
     void Awake()
@@ -112,6 +120,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
             float mouseAxisX = _yawInversion * _lookInput.x;
             _yaw += mouseAxisX * yawRotationalSpeed * Time.deltaTime;
             transform.localRotation = Quaternion.Euler(0, _yaw, 0);
+
             //Movement
             Vector3 movement = new Vector3(0, 0, 0);
             float yawInRadians = _yaw * Mathf.Deg2Rad;
@@ -129,6 +138,8 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
                 movement -= right;
 
             movement.Normalize();
+            animator.SetFloat(MovementX, (int) movement.x);
+            animator.SetFloat(MovementY, (int) movement.y);
             movement *= (Time.deltaTime * speed);
 
             //Gravity
@@ -137,32 +148,17 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 
             movement *= Time.deltaTime * speed * movementSpeedMultiplier;
             CollisionFlags collisionFlags = _characterController.Move(movement);
-            if (_yawInversion == 1)
+            if ((collisionFlags & CollisionFlags.Below) != 0)
             {
-                if ((collisionFlags & CollisionFlags.Below) != 0)
-                {
-                    _onGround = true;
-                    _verticalSpeed = 0.0f;
-                }
-                else
-                    _onGround = false;
-
-                if ((collisionFlags & CollisionFlags.Above) != 0 && _verticalSpeed > 0.0f)
-                    _verticalSpeed = 0.0f;
+                animator.SetBool(IsJumping, false);
+                _onGround = true;
+                _verticalSpeed = 0.0f;
             }
             else
-            {
-                if ((collisionFlags & CollisionFlags.Above) != 0)
-                {
-                    _onGround = true;
-                    _verticalSpeed = 0.0f;
-                }
-                else
-                    _onGround = false;
+                _onGround = false;
 
-                if ((collisionFlags & CollisionFlags.Below) != 0 && _verticalSpeed > 0.0f)
-                    _verticalSpeed = 0.0f;
-            }
+            if ((collisionFlags & CollisionFlags.Above) != 0 && _verticalSpeed > 0.0f)
+                _verticalSpeed = 0.0f;
         }
     }
 
@@ -173,6 +169,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
             Ray cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
             RaycastHit raycastHit;
             Instantiate(fireFlash, bulletInstantiatePosition);
+            animator.SetBool(IsShooting, true);
             if (Physics.Raycast(cameraRay, out raycastHit, maxDistance * bulletDistanceMultiplier,
                 shootLayerMask.value))
             {
@@ -233,7 +230,10 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     public void OnJump(InputAction.CallbackContext context)
     {
         if (_onGround && context.performed)
+        {
             _verticalSpeed = jumpSpeed * jumpHeightMultiplier;
+            animator.SetBool(IsJumping, true);
+        }
     }
 
     public void OnFire(InputAction.CallbackContext context)
@@ -246,18 +246,23 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
                 Shoot();
         }
         else if (context.canceled)
+        {
+            animator.SetBool(IsShooting, false);
             CancelInvoke(nameof(Shoot));
+        }
     }
 
     public void OnAim(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
+            animator.SetBool(IsAiming, true);
             CancelInvoke("Deaim");
             InvokeRepeating("Aim", 0, Time.deltaTime);
         }
         else if (context.canceled)
         {
+            animator.SetBool(IsAiming, false);
             CancelInvoke("Aim");
             InvokeRepeating("Deaim", 0, Time.deltaTime);
         }

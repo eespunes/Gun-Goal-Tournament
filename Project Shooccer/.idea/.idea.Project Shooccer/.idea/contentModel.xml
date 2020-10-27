@@ -39,6 +39,7 @@
           <e p="InstantiatePlayer.cs" t="Include" />
           <e p="MainMenuController.cs" t="Include" />
           <e p="MatchController.cs" t="Include" />
+          <e p="Pause.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="ReplayBuffer.cs" t="Include" />
           <e p="ReplayManager.cs" t="Include" />
