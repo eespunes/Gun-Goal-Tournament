@@ -1,7 +1,8 @@
 ﻿public class GameController
 {
     private static GameController _instance;
-    public PlayerController PlayerController { get; set; }
+
+    public SimpleControls SimpleControls { get; set; }
 
     private GameController()
     {

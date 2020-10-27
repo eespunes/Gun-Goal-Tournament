@@ -57,6 +57,14 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3a38867-7172-4844-b2e5-d574db9f79d0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -213,6 +221,28 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                     ""action"": ""aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa3b9130-f6b7-4b68-883f-9beaf457e7ab"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard + Mouse"",
+                    ""action"": ""reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57f28f02-f54d-43a8-8ac1-4409503be3f8"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -292,6 +322,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
         m_gameplay_jump = m_gameplay.FindAction("jump", throwIfNotFound: true);
         m_gameplay_fire = m_gameplay.FindAction("fire", throwIfNotFound: true);
         m_gameplay_aim = m_gameplay.FindAction("aim", throwIfNotFound: true);
+        m_gameplay_reload = m_gameplay.FindAction("reload", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -349,6 +380,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
     private readonly InputAction m_gameplay_jump;
     private readonly InputAction m_gameplay_fire;
     private readonly InputAction m_gameplay_aim;
+    private readonly InputAction m_gameplay_reload;
     public struct GameplayActions
     {
         private @SimpleControls m_Wrapper;
@@ -358,6 +390,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
         public InputAction @jump => m_Wrapper.m_gameplay_jump;
         public InputAction @fire => m_Wrapper.m_gameplay_fire;
         public InputAction @aim => m_Wrapper.m_gameplay_aim;
+        public InputAction @reload => m_Wrapper.m_gameplay_reload;
         public InputActionMap Get() { return m_Wrapper.m_gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -382,6 +415,9 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                 @aim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
                 @aim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
                 @aim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
+                @reload.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @reload.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                @reload.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -401,6 +437,9 @@ public class @SimpleControls : IInputActionCollection, IDisposable
                 @aim.started += instance.OnAim;
                 @aim.performed += instance.OnAim;
                 @aim.canceled += instance.OnAim;
+                @reload.started += instance.OnReload;
+                @reload.performed += instance.OnReload;
+                @reload.canceled += instance.OnReload;
             }
         }
     }
@@ -463,6 +502,7 @@ public class @SimpleControls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
