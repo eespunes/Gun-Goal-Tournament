@@ -10,15 +10,17 @@ public class ReplayBuffer : MonoBehaviour
     private Quaternion[] _rotationsBuffer;
     private Vector3[] _scaleBuffer;
 
+
     private int _bufferCounter;
     private int _maxBuffer = 0;
+    private int _length;
 
     private void Start()
     {
-        var instanceTime = ReplayManager.Instance.time * ReplayManager.Instance.fps;
-        _positionsBuffer = new Vector3[instanceTime];
-        _rotationsBuffer = new Quaternion[instanceTime];
-        _scaleBuffer = new Vector3[instanceTime];
+        _length = ReplayManager.Instance.time * ReplayManager.Instance.fps;
+        _positionsBuffer = new Vector3[_length];
+        _rotationsBuffer = new Quaternion[_length];
+        _scaleBuffer = new Vector3[_length];
 
         ReplayManager.Instance.AddToList(this);
 
@@ -27,10 +29,10 @@ public class ReplayBuffer : MonoBehaviour
 
     private void AddToBuffer()
     {
-        if (_bufferCounter >= _positionsBuffer.Length)
+        if (_bufferCounter >= _length)
         {
-            _bufferCounter = _positionsBuffer.Length - 1;
-            _maxBuffer = _positionsBuffer.Length - 1;
+            _bufferCounter = _length - 1;
+            _maxBuffer = _length - 1;
             RemoveInitial();
             _positionsBuffer[_bufferCounter] = transform.position;
             _rotationsBuffer[_bufferCounter] = transform.rotation;
@@ -48,7 +50,7 @@ public class ReplayBuffer : MonoBehaviour
 
     private void RemoveInitial()
     {
-        for (int i = 1; i < _positionsBuffer.Length; i++)
+        for (int i = 1; i < _length; i++)
         {
             _positionsBuffer[i - 1] = _positionsBuffer[i];
             _rotationsBuffer[i - 1] = _rotationsBuffer[i];
@@ -62,6 +64,7 @@ public class ReplayBuffer : MonoBehaviour
 
         DestroyComponents();
         _bufferCounter = 0;
+        Debug.Log(1f / ReplayManager.Instance.fps);
         InvokeRepeating(nameof(StartReplay), 0, 1f / ReplayManager.Instance.fps);
     }
 

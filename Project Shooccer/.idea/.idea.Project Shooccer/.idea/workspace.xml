@@ -30,7 +30,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ae08af0-2feb-49bb-9962-ae82f6fc5c0d" name="Default Changelist" comment="" />
+    <list default="true" id="9ae08af0-2feb-49bb-9962-ae82f6fc5c0d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Match.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Match.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Match/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Match/NavMesh.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pause.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PauseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pause.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PauseManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball Icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Ball Icon.svg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Pitch.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Pitch.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/net.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/net.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/pitch.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/pitch.png.meta" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,9 +88,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/AIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DestroyParticles.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReplayManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ReplayBuffer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Goal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReplayBuffer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pause.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PauseManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -119,6 +142,7 @@
       <workItem from="1603578067112" duration="1036000" />
       <workItem from="1603626456358" duration="21837000" />
       <workItem from="1603705278703" duration="8231000" />
+      <workItem from="1603793003047" duration="6401000" />
     </task>
     <servers />
   </component>
@@ -143,9 +167,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1084" y="213" key="RiderGenerateDialog" timestamp="1603712135290">
+    <state x="1084" y="213" key="RiderGenerateDialog" timestamp="1603796631267">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1084" y="213" key="RiderGenerateDialog/0.0.2560.1080/-1920.0.1920.1080@0.0.2560.1080" timestamp="1603712135290" />
+    <state x="1084" y="213" key="RiderGenerateDialog/0.0.2560.1080/-1920.0.1920.1080@0.0.2560.1080" timestamp="1603796631267" />
   </component>
 </project>
