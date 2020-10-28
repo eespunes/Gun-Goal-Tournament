@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
                     switch (raycastHit.collider.tag)
                     {
                         case "Ball":
-                            raycastHit.collider.GetComponent<Ball>()
+                            raycastHit.collider.GetComponent<BallController>()
                                 .MoveBall(raycastHit.point, ballInfluenceMultiplier);
                             break;
                     }

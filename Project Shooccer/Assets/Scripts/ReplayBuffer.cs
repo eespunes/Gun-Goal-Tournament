@@ -92,7 +92,7 @@ public class ReplayBuffer : MonoBehaviour
         var navMeshAgent = GetComponent<NavMeshAgent>();
         if (navMeshAgent) Destroy(navMeshAgent);
 
-        var ball = GetComponent<Ball>();
+        var ball = GetComponent<BallController>();
         if (ball) Destroy(ball);
         var player = GetComponent<PlayerController>();
         if (player) Destroy(player);

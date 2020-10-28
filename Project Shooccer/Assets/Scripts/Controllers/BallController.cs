@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public class Ball : MonoBehaviour
+public class BallController : MonoBehaviour
 {
     private Rigidbody _rigidBody;
     [SerializeField] private float ballForce;
