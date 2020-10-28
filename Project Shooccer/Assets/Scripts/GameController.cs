@@ -2,8 +2,6 @@
 {
     private static GameController _instance;
 
-    public SimpleControls SimpleControls { get; set; }
-
     private GameController()
     {
     }

@@ -6,26 +6,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Slider = UnityEngine.UIElements.Slider;
 
-public class PauseManager : MonoBehaviour, SimpleControls.IUIActions
+public class PauseManager : MonoBehaviour
 {
     private bool _paused = false;
     [SerializeField] GameObject pauseCanvas, optionsCanvas;
     [SerializeField] private Scrollbar volumeSlider, sensitivitySlider;
-    private SimpleControls _simpleControls;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _simpleControls = new SimpleControls();
-
-        _simpleControls.UI.SetCallbacks(this);
-        _simpleControls.UI.Enable();
-    }
-
-    private void OnDestroy()
-    {
-        _simpleControls.Dispose();
-    }
 
 
     void Pause()
@@ -70,10 +56,5 @@ public class PauseManager : MonoBehaviour, SimpleControls.IUIActions
     {
         PlayerPrefs.SetFloat("Volume", value);
     }
-
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-            Pause();
-    }
+    
 }
