@@ -15,24 +15,34 @@ public class ScoreboardController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI homeScoreText;
     [SerializeField] private TextMeshProUGUI awayScoreText;
+    [SerializeField] private TextMeshProUGUI randomText;
+
+    private Animator _animator;
+
+    public Animator Animator => _animator;
+
+    private static readonly int IsGoal = Animator.StringToHash("isGoal");
+    private static readonly int IsEnd = Animator.StringToHash("isEnd");
+    private static readonly int IsReplaying = Animator.StringToHash("isReplaying");
 
     private void Awake()
     {
         MatchController.GetInstance().ScoreboardController = this;
-    }
-
-    void Start()
-    {
+        _animator = GetComponent<Animator>();
         if (MatchController.GetInstance().Time < 0)
-            _time = maxTime * 60;
+        {
+            {
+                _time = maxTime * 60;
+                MatchController.GetInstance().TimeString = GenerateTimeString();
+            }
+        }
         else
             _time = MatchController.GetInstance().Time;
 
         homeScoreText.text = MatchController.GetInstance().HomeScore.ToString();
         awayScoreText.text = MatchController.GetInstance().AwayScore.ToString();
-        
-        Invoke(nameof(StartMatch), 3);
     }
+    
 
     void Update()
     {
@@ -40,7 +50,7 @@ public class ScoreboardController : MonoBehaviour
             UpdateTime();
     }
 
-    private void StartMatch()
+    public void StartMatch()
     {
         MatchController.GetInstance().Playing = true;
     }
@@ -49,6 +59,14 @@ public class ScoreboardController : MonoBehaviour
     {
         _time -= 1 * Time.deltaTime;
 
+        var finalString = GenerateTimeString();
+
+        timeText.text = finalString;
+        MatchController.GetInstance().TimeString = finalString;
+    }
+
+    private string GenerateTimeString()
+    {
         int lMinutesInt = (int) _time / 60;
         string lAddMinutes = lMinutesInt < 10 ? "0" : "";
 
@@ -70,7 +88,7 @@ public class ScoreboardController : MonoBehaviour
             StopTime();
         }
 
-        timeText.text = finalString;
+        return finalString;
     }
 
     private void StopTime()
@@ -87,29 +105,39 @@ public class ScoreboardController : MonoBehaviour
 
     private void EndMatch()
     {
+        randomText.text = "END";
+        _animator.SetBool(IsEnd, true);
+    }
+
+
+    public void Goal()
+    {
+        homeScoreText.text = MatchController.GetInstance().HomeScore.ToString();
+        awayScoreText.text = MatchController.GetInstance().AwayScore.ToString();
+        _animator.SetBool(IsGoal, true);
+        randomText.text = "GOAL";
+    }
+
+    public void ToMainMenu()
+    {
         MatchController.GetInstance().Time = -1;
         MatchController.GetInstance().HomeScore = 0;
         MatchController.GetInstance().AwayScore = 0;
+        SceneManager.LoadScene(0);
     }
 
-    public void HomeGoal()
+    public void ReloadScene()
     {
-        homeScoreText.text = MatchController.GetInstance().HomeScore.ToString();
-
-        Goal();
-    }
-
-    public void AwayGoal()
-    {
-        awayScoreText.text = MatchController.GetInstance().AwayScore.ToString();
-
-        Goal();
-    }
-
-    private void Goal()
-    {
+        _animator.SetBool(IsReplaying, false);
         MatchController.GetInstance().Playing = false;
         MatchController.GetInstance().Time = _time;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartReplay()
+    {
+        _animator.SetBool(IsGoal, false);
+        _animator.SetBool(IsReplaying, true);
+        randomText.text = "REPLAY";
     }
 }

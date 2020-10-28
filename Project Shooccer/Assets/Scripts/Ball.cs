@@ -16,6 +16,6 @@ public class Ball : MonoBehaviour
     {
         _rigidBody.useGravity = true;
         _rigidBody.isKinematic = false;
-        _rigidBody.AddExplosionForce(ballForce*ballInfluenceMultiplier,hitPoint,1);
+        _rigidBody.AddExplosionForce(ballForce * ballInfluenceMultiplier, hitPoint, 1);
     }
 }

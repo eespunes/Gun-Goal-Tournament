@@ -10,6 +10,7 @@ public class Goal : MonoBehaviour
     [SerializeField] private GameObject camera;
     
     private bool _once;
+    private static readonly int IsReplaying = Animator.StringToHash("isReplaying");
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,12 @@ public class Goal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ReplayManager.Instance.Transition && !_once)
+        if (!_once&&MatchController.GetInstance().ScoreboardController.Animator.GetBool(IsReplaying))
         {
-            if (isHome) MatchController.GetInstance().AwayGoal();
-            else MatchController.GetInstance().HomeGoal();
+            ReplayManager.Instance.Replay();
+            Camera.main.gameObject.SetActive(false);
+            camera.SetActive(true);
+            
             _once = true;
         }
     }
@@ -34,14 +37,8 @@ public class Goal : MonoBehaviour
         {
             _once = false;
             MatchController.GetInstance().Playing = false;
-            Invoke("GoalAnimation", 2f);
+            if (isHome) MatchController.GetInstance().AwayGoal();
+            else MatchController.GetInstance().HomeGoal();
         }
-    }
-
-    private void GoalAnimation()
-    {
-        ReplayManager.Instance.Replay();
-        Camera.main.gameObject.SetActive(false);
-        camera.SetActive(true);
     }
 }

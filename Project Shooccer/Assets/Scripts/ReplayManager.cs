@@ -19,11 +19,11 @@ public class ReplayManager : MonoBehaviour
     private void Awake()
     {
         _replayBuffers = new List<ReplayBuffer>();
-        if (_instance != null && _instance != this) 
+        if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
         }
- 
+
         _instance = this;
     }
 
@@ -42,6 +42,6 @@ public class ReplayManager : MonoBehaviour
 
     public void StopReplay()
     {
-        transition = true;
+        MatchController.GetInstance().ScoreboardController.ReloadScene();
     }
 }
