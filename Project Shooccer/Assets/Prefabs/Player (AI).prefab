@@ -62,6 +62,7 @@ MonoBehaviour:
   shotOffset: 3
   isHome: 0
   pitchTransform: {fileID: 7259089644751605542}
+  angleXOffset: 120
 --- !u!195 &-2550487181053949534
 NavMeshAgent:
   m_ObjectHideFlags: 0

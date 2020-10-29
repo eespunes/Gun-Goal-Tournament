@@ -39,11 +39,14 @@ public class AIController : MonoBehaviour
     private float _angleY;
     private Ray _playerBall_ray;
     [SerializeField] private Transform pitchTransform;
+    private BallController _ballController;
+    [SerializeField] private float angleXOffset;
 
 
     private void Start()
     {
         _ball = GameObject.Find("Ball");
+        _ballController = _ball.GetComponent<BallController>();
         _agent = GetComponent<NavMeshAgent>();
         _vectors = new[]
         {
@@ -54,17 +57,20 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (MatchController.GetInstance().Playing)
-        {
+        // if (MatchController.GetInstance().Playing)
+        // {
             Movement();
 
             if (_fireCounter > fireRate)
             {
-                Shoot();
+                if (_ballController.IsGrounded() && Mathf.Abs(_angleX) <= angleXOffset)
+                    Shoot();
                 _fireCounter = 0;
             }
             else _fireCounter += Time.deltaTime;
-        }
+        // }
+        // else
+        //     _agent.SetDestination(transform.position);
     }
 
     private void Movement()
@@ -76,7 +82,8 @@ public class AIController : MonoBehaviour
         if (_ball.transform.position.x < 0)
         {
             //DEFENDING
-            target = GenerateRay(_myGoal.transform.position, 2);
+            var myGoalPosition = new Vector3(_myGoal.transform.position.x, 25, _myGoal.transform.position.z);
+            target = GenerateRay(myGoalPosition, 2);
         }
         else
         {
@@ -88,61 +95,44 @@ public class AIController : MonoBehaviour
         _agent.SetDestination(target);
         transform.LookAt(_ball.transform);
         transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-        // pitchTransform.LookAt(_ball.transform);
-        // pitchTransform.rotation = new Quaternion(0, 0, pitchTransform.rotation.y, pitchTransform.rotation.w);
+        
+        // pitchTransform.LookAt(new Vector3(0,_ball.transform.position.y,0));
+        // pitchTransform.rotation = new Quaternion(-pitchTransform.rotation.x, transform.rotation.y, 0, pitchTransform.rotation.w);
     }
 
     private Vector3 GenerateRay(Vector3 goalPosition, float ballOffset)
     {
         Ray ray = new Ray(goalPosition, goalPosition - _ball.transform.position);
 
-        _angleX = 180 - Vector3.SignedAngle(_playerBall_ray.direction, ray.direction, -_ball.transform.up);
-        _angleY = 180 - Vector3.SignedAngle(_ball.transform.position, bulletInstantiatePosition.position,
-            -_ball.transform.right);
-
-        Debug.DrawRay(goalPosition,
-            ray.direction * (Vector3.Distance(_ball.transform.position, goalPosition) * ballOffset) / 2, Color.yellow,
-            2);
+        _angleX = Vector3.SignedAngle(_playerBall_ray.direction, ray.direction, -_ball.transform.up) *
+                  (ballOffset / Mathf.Abs(ballOffset));
+        _angleY = _ballController.maxDistanceY - _ball.transform.position.y;
+        
         return ray.direction * (_ball.transform.localScale.x * ballOffset) + _ball.transform.position;
     }
 
     private void Shoot()
     {
-        Debug.DrawRay(_playerBall_ray.origin,
-            _playerBall_ray.direction * -Vector3.Distance(_ball.transform.position, bulletInstantiatePosition.position),
-            Color.yellow,
-            2);
-        Debug.Log(_playerBall_ray.direction);
-        var ballDirection = new Vector3(_playerBall_ray.direction.x + _angleX / 90 * shotOffset,
-            _playerBall_ray.direction.y,
-            _playerBall_ray.direction.z + _angleX / 90 * shotOffset);
-        Debug.Log(ballDirection * shotOffset);
-        Ray shoot_ray = new Ray(bulletInstantiatePosition.position,
-            (_ball.transform.position + ballDirection * shotOffset) - bulletInstantiatePosition.position);
-
-        var direction = shoot_ray.direction *
-                        Vector3.Distance(_ball.transform.position, bulletInstantiatePosition.position);
+        var ballDirection = new Vector3(_playerBall_ray.direction.x + _angleX / angleXOffset * shotOffset,
+            _playerBall_ray.direction.y + _angleY / _ballController.maxDistanceY * shotOffset,
+            _playerBall_ray.direction.z + _angleX / angleXOffset * shotOffset);
+        
+        Ray shootRay = new Ray(bulletInstantiatePosition.position,
+            (_ball.transform.position + ballDirection) - bulletInstantiatePosition.position);
 
 
-        if (Physics.Raycast(shoot_ray, out var raycastHit, maxDistance * bulletDistanceMultiplier,
+        if (Physics.Raycast(shootRay, out var raycastHit, maxDistance * bulletDistanceMultiplier,
             shootLayerMask.value))
         {
             switch (raycastHit.collider.tag)
             {
                 case "Ball":
-                    Debug.DrawRay(shoot_ray.origin, direction, Color.green, 2);
-                    // raycastHit.collider.GetComponent<BallController>().MoveBall(raycastHit.point, ballInfluenceMultiplier);
+                    // Debug.DrawRay(shoot_ray.origin, direction, Color.green, 2);
+                    raycastHit.collider.GetComponent<BallController>()
+                        .MoveBall(raycastHit.point, ballInfluenceMultiplier);
                     break;
             }
         }
-        else
-        {
-            Debug.DrawRay(shoot_ray.origin, direction, Color.red, 2);
-        }
-
-        Debug.DrawRay(_ball.transform.position, Vector3.up * 10, Color.blue, 2);
-
-        Debug.LogError("Shoot, " + _angleX + " , " + _angleY);
     }
 
     public void Init()
