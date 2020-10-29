@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class InstantiatePlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject player, ai;
+    [SerializeField] private GameObject home,away, ai;
     [SerializeField] private bool isHome;
 
     private void Awake()
     {
         if (isHome)
         {
-            GameObject go = Instantiate(player, transform);
+            GameObject go = Instantiate(home, transform);
             go.transform.parent = null;
             go.GetComponent<PlayerController>().isHome = true;
             go.GetComponent<PlayerController>().Init();
@@ -21,7 +21,7 @@ public class InstantiatePlayer : MonoBehaviour
         {
             if (MatchController.GetInstance().SplitScreen)
             {
-                GameObject go = Instantiate(player, transform);
+                GameObject go = Instantiate(away, transform);
                 go.transform.parent = null;
                 go.GetComponent<PlayerController>().isHome = false;
                 go.GetComponent<PlayerController>().Init();
