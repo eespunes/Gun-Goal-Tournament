@@ -13,7 +13,7 @@ using UnityEngine.UI;
 using Object = System.Object;
 using Random = UnityEngine.Random;
 
-public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
 
@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     private float _verticalSpeed;
     private bool _onGround;
     [SerializeField] private float jumpSpeed = 10f;
-    private SimpleControls _simpleControls;
     private Vector2 _moveInput;
     private Vector2 _lookInput;
     private bool _runInput;
@@ -81,16 +80,11 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 
     [Header("UI")] [SerializeField] private TextMeshProUGUI currentAmmoText;
     [SerializeField] private TextMeshProUGUI totalAmmoText;
+    private int _playerIndex;
 
 
     void Awake()
     {
-        _simpleControls = new SimpleControls();
-        // GameController.GetInstance().SimpleControls = _simpleControls;
-
-        _simpleControls.gameplay.SetCallbacks(this);
-        _simpleControls.gameplay.Enable();
-
         _yaw = transform.rotation.eulerAngles.y;
         _pitch = pitchControllerTransform.localRotation.eulerAngles.x;
         _characterController = GetComponent<CharacterController>();
@@ -99,23 +93,12 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 
         _currentAmmo = ammoPerMagazine;
         _totalAmmo = ammoPerMagazine * (numberOfMagazines);
-        
+
         currentAmmoText.text = _currentAmmo.ToString();
         totalAmmoText.text = _totalAmmo.ToString();
 
         if (PlayerPrefs.GetFloat("Sensibility") == 0)
             PlayerPrefs.SetFloat("Sensibility", 1);
-    }
-
-    public void Init()
-    {
-        if (MatchController.GetInstance().SplitScreen)
-            _camera.rect = new Rect(isHome ? _camera.rect.x : .5f, _camera.rect.y, .5f, _camera.rect.height);
-    }
-
-    private void OnDestroy()
-    {
-        _simpleControls.Dispose();
     }
 
     // Update is called once per frame
@@ -146,17 +129,13 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
             float yaw90InRadians = (_yaw + 90.0f) * Mathf.Deg2Rad;
             Vector3 forward = new Vector3(Mathf.Sin(yawInRadians), 0.0f, Mathf.Cos(yawInRadians));
             Vector3 right = new Vector3(Mathf.Sin(yaw90InRadians), 0.0f, Mathf.Cos(yaw90InRadians));
-            if (_moveInput.y > 0)
-                movement = forward;
-            else if (_moveInput.y < 0)
-                movement = -forward;
-
-            if (_moveInput.x > 0)
-                movement += right;
-            else if (_moveInput.x < 0)
-                movement -= right;
+            
+            movement = forward * _moveInput.y;
+            
+            movement += right * _moveInput.x;
 
             movement.Normalize();
+            
             animator.SetFloat(MovementX, (int) movement.x);
             animator.SetFloat(MovementY, (int) movement.y);
             movement *= (Time.deltaTime * speed);
@@ -191,7 +170,7 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
                 currentAmmoText.text = _currentAmmo.ToString();
                 animator.SetBool(HasNoAmmo, false);
                 Ray cameraRay;
-                
+
                 if (animator.GetBool(IsAiming))
                     cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
                 else
@@ -257,61 +236,57 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
 
     #region Input
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void SetMoveInput(InputAction.CallbackContext context)
     {
         _moveInput = context.ReadValue<Vector2>();
     }
 
-    public void OnLook(InputAction.CallbackContext context)
+    public void SetLookInput(InputAction.CallbackContext context)
     {
         _lookInput = context.ReadValue<Vector2>();
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    public void StartJumping()
     {
-        if (_onGround && context.performed)
+        if (_onGround)
         {
             _verticalSpeed = jumpSpeed * jumpHeightMultiplier;
             animator.SetBool(IsJumping, true);
         }
     }
 
-    public void OnFire(InputAction.CallbackContext context)
+    public void StopShooting()
     {
-        if (context.performed)
-        {
-            if (automaticWeapon)
-                InvokeRepeating(nameof(Shoot), 0, .25f * fireRate);
-            else
-                Shoot();
-        }
-        else if (context.canceled)
-        {
-            animator.SetBool(IsShooting, false);
-            animator.SetBool(HasNoAmmo, false);
-            CancelInvoke(nameof(Shoot));
-        }
+        animator.SetBool(IsShooting, false);
+        animator.SetBool(HasNoAmmo, false);
+        CancelInvoke(nameof(Shoot));
     }
 
-    public void OnAim(InputAction.CallbackContext context)
+    public void StartShooting()
     {
-        if (context.performed)
-        {
-            animator.SetBool(IsAiming, true);
-            CancelInvoke("Deaim");
-            InvokeRepeating("Aim", 0, Time.deltaTime);
-        }
-        else if (context.canceled)
-        {
-            animator.SetBool(IsAiming, false);
-            CancelInvoke("Aim");
-            InvokeRepeating("Deaim", 0, Time.deltaTime);
-        }
+        if (automaticWeapon)
+            InvokeRepeating(nameof(Shoot), 0, .25f * fireRate);
+        else
+            Shoot();
     }
 
-    public void OnReload(InputAction.CallbackContext context)
+    public void StartDeaiming()
     {
-        if (context.performed && _currentAmmo != ammoPerMagazine)
+        animator.SetBool(IsAiming, false);
+        CancelInvoke("Aim");
+        InvokeRepeating("Deaim", 0, Time.deltaTime);
+    }
+
+    public void StartAiming()
+    {
+        animator.SetBool(IsAiming, true);
+        CancelInvoke("Deaim");
+        InvokeRepeating("Aim", 0, Time.deltaTime);
+    }
+
+    public void Reload()
+    {
+        if (_currentAmmo != ammoPerMagazine)
         {
             _totalAmmo = Math.Max(0, _totalAmmo - (ammoPerMagazine - _currentAmmo));
             _currentAmmo = ammoPerMagazine;
@@ -321,4 +296,31 @@ public class PlayerController : MonoBehaviour, SimpleControls.IGameplayActions
     }
 
     #endregion
+
+    public int GetPlayerIndex()
+    {
+        return _playerIndex;
+    }
+
+    public void Init()
+    {
+        if (MatchController.GetInstance().SplitScreen)
+        {
+            if (isHome)
+            {
+                _playerIndex = 0;
+                _camera.rect = new Rect(0, 0, 0.5f, 1);
+            }
+            else
+            {
+                _playerIndex = 1;
+                _camera.rect = new Rect(0.5f, 0, 0.5f, 1);
+            }
+        }
+    }
+
+    public Camera GetCamera()
+    {
+        return _camera;
+    }
 }

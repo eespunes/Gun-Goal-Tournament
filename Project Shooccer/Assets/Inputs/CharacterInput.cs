@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Inputs/SimpleControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Inputs/CharacterInput.inputactions'
 
 using System;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @SimpleControls : IInputActionCollection, IDisposable
+public class @CharacterInput : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @SimpleControls()
+    public @CharacterInput()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""SimpleControls"",
+    ""name"": ""CharacterInput"",
     ""maps"": [
         {
             ""name"": ""gameplay"",
@@ -383,8 +383,8 @@ public class @SimpleControls : IInputActionCollection, IDisposable
     private readonly InputAction m_gameplay_reload;
     public struct GameplayActions
     {
-        private @SimpleControls m_Wrapper;
-        public GameplayActions(@SimpleControls wrapper) { m_Wrapper = wrapper; }
+        private @CharacterInput m_Wrapper;
+        public GameplayActions(@CharacterInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @move => m_Wrapper.m_gameplay_move;
         public InputAction @look => m_Wrapper.m_gameplay_look;
         public InputAction @jump => m_Wrapper.m_gameplay_jump;
@@ -451,8 +451,8 @@ public class @SimpleControls : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Pause;
     public struct UIActions
     {
-        private @SimpleControls m_Wrapper;
-        public UIActions(@SimpleControls wrapper) { m_Wrapper = wrapper; }
+        private @CharacterInput m_Wrapper;
+        public UIActions(@CharacterInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
