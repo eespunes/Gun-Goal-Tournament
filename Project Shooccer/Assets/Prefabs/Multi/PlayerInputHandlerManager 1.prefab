@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8337086395864213811
+--- !u!1 &3321373012497842253
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8863840747561474416}
-  - component: {fileID: 7632821718111921430}
-  - component: {fileID: 6810789343538184130}
+  - component: {fileID: 2784936498308476942}
+  - component: {fileID: 3767716451101183080}
+  - component: {fileID: 225298854422075068}
   m_Layer: 0
-  m_Name: InputHandlerManager
+  m_Name: PlayerInputHandlerManager 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8863840747561474416
+--- !u!4 &2784936498308476942
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337086395864213811}
+  m_GameObject: {fileID: 3321373012497842253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7632821718111921430
+--- !u!114 &3767716451101183080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337086395864213811}
+  m_GameObject: {fileID: 3321373012497842253}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 1667496325373086453, guid: 52ca6e937d03bee45861348c1cc22721, type: 3}
-  m_SplitScreen: 1
+  m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
   m_SplitScreenRect:
@@ -75,13 +75,13 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &6810789343538184130
+--- !u!114 &225298854422075068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337086395864213811}
+  m_GameObject: {fileID: 3321373012497842253}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05cbb3df5e0221e488397fcac176185d, type: 3}

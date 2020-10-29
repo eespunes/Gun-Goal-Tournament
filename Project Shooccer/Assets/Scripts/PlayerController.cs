@@ -308,16 +308,19 @@ public class PlayerController : MonoBehaviour
 
     public void Init()
     {
-        if (isHome)
-        {
-            _playerIndex = 0;
-            _camera.rect = new Rect(0, 0, 0.5f, 1);
-        }
-        else
-        {
-            _playerIndex = 1;
-            _camera.rect = new Rect(0.5f, 0, 0.5f, 1);
-        }
+        // if (MatchController.GetInstance().SplitScreen)
+        // {
+            if (isHome)
+            {
+                _playerIndex = 0;
+                _camera.rect = new Rect(0, 0, 0.5f, 1);
+            }
+            else
+            {
+                _playerIndex = 1;
+                _camera.rect = new Rect(0.5f, 0, 0.5f, 1);
+            }
+        // }
     }
 
     public Camera GetCamera()

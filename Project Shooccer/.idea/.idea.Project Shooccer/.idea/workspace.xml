@@ -31,20 +31,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ae08af0-2feb-49bb-9962-ae82f6fc5c0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChoosePlayerInputHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChoosePlayerInputHandler.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChoosePlayerInputHandlerManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChoosePlayerInputHandlerManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Inputs/SimpleControls.inputactions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/AwayTeam.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/AwayTeam.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/HomeTeam.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/HomeTeam.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HitParticle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/HitParticle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/InputHandlerManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/InputHandlerManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MuzzleFlash01.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MuzzleFlash01.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player (AI).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player (AI).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerInputHandler.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerInputHandler.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Match.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Match.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InstantiatePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InstantiatePlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PauseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PauseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChoosePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenuController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChoosePlayer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
@@ -57,18 +69,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MatchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Goal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../LudumDare 47/Project Space/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/05250243-5982-472D-92DA-7F939C7F8164/37/6e0011e6/RuntimeInitializeLoadType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Scoreboard/Scoreboard/Assets/Scripts/Scoreboard/MatchController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MatchController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerInputHandlerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugUpdater.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -81,7 +92,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/A.cs" />
         <option value="$PROJECT_DIR$/Assets/Ludiq/Ludiq.Chronos/Source/RecorderTimeline.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugUpdater.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainMenuController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MatchController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AIController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DestroyParticles.cs" />
@@ -91,9 +101,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Pause.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PauseManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InstantiatePlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandlerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainMenuController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TitleScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChoosePlayerInputHandlerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChoosePlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChoosePlayerInputHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InstantiatePlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
       </list>
     </option>
@@ -145,6 +160,7 @@
       <workItem from="1603705278703" duration="8231000" />
       <workItem from="1603793003047" duration="6401000" />
       <workItem from="1603909410194" duration="3451000" />
+      <workItem from="1603971151228" duration="4859000" />
     </task>
     <servers />
   </component>
@@ -169,9 +185,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1084" y="213" key="RiderGenerateDialog" timestamp="1603796631267">
+    <state x="1084" y="213" key="RiderGenerateDialog" timestamp="1603973323879">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1084" y="213" key="RiderGenerateDialog/0.0.2560.1080/-1920.0.1920.1080@0.0.2560.1080" timestamp="1603796631267" />
+    <state x="1084" y="213" key="RiderGenerateDialog/0.0.2560.1080/-1920.0.1920.1080@0.0.2560.1080" timestamp="1603973323879" />
   </component>
 </project>
