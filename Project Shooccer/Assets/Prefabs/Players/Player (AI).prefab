@@ -46,23 +46,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a223e60676222d4b8d8a6e0216bf410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballInfluenceMultiplier: 0
-  movementSpeedMultiplier: 0
-  jumpHeightMultiplier: 0
+  ballInfluenceMultiplier: 1
+  movementSpeedMultiplier: 1
+  jumpHeightMultiplier: 1
   bulletDistanceMultiplier: 1
-  bulletAccuracyMultiplier: 0
-  aimSpeed: 0
-  fireRate: 0
+  bulletAccuracyMultiplier: 1
+  aimSpeed: 1
+  fireRate: 1
   shootLayerMask:
     serializedVersion: 2
     m_Bits: 256
   maxDistance: 100
   ballForce: 500
   bulletInstantiatePosition: {fileID: 5466408486891704939}
-  normalFov: 60
-  aimFov: 40
-  shotOffset: 0
+  shotOffset: 3
   isHome: 0
+  pitchTransform: {fileID: 7259089644751605542}
+  angleXOffset: 120
 --- !u!195 &-2550487181053949534
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -322,6 +322,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88eca6084cd3ecd4aaf165b93697e429, type: 2}
     - target: {fileID: 2773309787870893844, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -348,6 +352,11 @@ Transform:
 --- !u!1 &5180840502096649743 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
+  m_PrefabInstance: {fileID: 5708279294852479591}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7259089644751605542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6085886658039450303, guid: ea32cb661a062a84b8fac0d45323a9a1, type: 3}
   m_PrefabInstance: {fileID: 5708279294852479591}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5779074813532797677 stripped

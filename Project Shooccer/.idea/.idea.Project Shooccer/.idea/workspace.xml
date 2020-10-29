@@ -32,6 +32,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ae08af0-2feb-49bb-9962-ae82f6fc5c0d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Shooccer/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Assets/Materials/AwayTeam.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/AwayTeam.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Materials/HomeTeam.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/HomeTeam.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Multi/ChoosePlayerInput.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Multi/ChoosePlayerInput.prefab" afterDir="false" />
@@ -45,6 +46,11 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandlerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandlerManager.cs" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player (AI).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player (AI).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/AIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/AIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/BallController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/BallController.cs" afterDir="false" />
+>>>>>>> feature/ai_shots
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +65,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Goal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/../../LudumDare 47/Project Space/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -67,6 +74,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScoreboardController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+=======
+    <setting file="file://$PROJECT_DIR$/../../Scoreboard/Scoreboard/Assets/Scripts/Scoreboard/MatchController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../LudumDare 47/Project Space/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
+>>>>>>> feature/ai_shots
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugUpdater.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -96,7 +107,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ChoosePlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandlerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerInputHandler.cs" />
+=======
+        <option value="$PROJECT_DIR$/Assets/Scripts/BallController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/BallController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/AIController.cs" />
+>>>>>>> feature/ai_shots
       </list>
     </option>
   </component>
@@ -146,9 +163,14 @@
       <workItem from="1603626456358" duration="21837000" />
       <workItem from="1603705278703" duration="8231000" />
       <workItem from="1603793003047" duration="6401000" />
+<<<<<<< HEAD
       <workItem from="1603909410194" duration="3451000" />
       <workItem from="1603971151228" duration="4859000" />
       <workItem from="1603980915497" duration="5177000" />
+=======
+      <workItem from="1603883681004" duration="4462000" />
+      <workItem from="1603965061180" duration="4083000" />
+>>>>>>> feature/ai_shots
     </task>
     <servers />
   </component>

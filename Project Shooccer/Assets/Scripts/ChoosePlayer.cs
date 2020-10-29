@@ -108,6 +108,7 @@ public class ChoosePlayer : MonoBehaviour
                 random = Random.Range(0, kits.Count - 1);
 
             awayMaterial.mainTexture = kits[random];
+            _isSplitScreen = false;
         }
         else
         {
@@ -172,7 +173,6 @@ public class ChoosePlayer : MonoBehaviour
     public void SetStart(int i, bool start)
     {
         playersReady[i] = start;
-        Debug.Log("Start " + i);
         if (AllPlayersReady())
             Play();
     }
