@@ -64,7 +64,6 @@ public class ReplayBuffer : MonoBehaviour
 
         DestroyComponents();
         _bufferCounter = 0;
-        Debug.Log(1f / ReplayManager.Instance.fps);
         InvokeRepeating(nameof(StartReplay), 0, 1f / ReplayManager.Instance.fps);
     }
 
@@ -92,7 +91,7 @@ public class ReplayBuffer : MonoBehaviour
         var navMeshAgent = GetComponent<NavMeshAgent>();
         if (navMeshAgent) Destroy(navMeshAgent);
 
-        var ball = GetComponent<Ball>();
+        var ball = GetComponent<BallController>();
         if (ball) Destroy(ball);
         var player = GetComponent<PlayerController>();
         if (player) Destroy(player);
