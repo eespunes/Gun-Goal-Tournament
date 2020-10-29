@@ -129,17 +129,13 @@ public class PlayerController : MonoBehaviour
             float yaw90InRadians = (_yaw + 90.0f) * Mathf.Deg2Rad;
             Vector3 forward = new Vector3(Mathf.Sin(yawInRadians), 0.0f, Mathf.Cos(yawInRadians));
             Vector3 right = new Vector3(Mathf.Sin(yaw90InRadians), 0.0f, Mathf.Cos(yaw90InRadians));
-            if (_moveInput.y > 0)
-                movement = forward;
-            else if (_moveInput.y < 0)
-                movement = -forward;
-
-            if (_moveInput.x > 0)
-                movement += right;
-            else if (_moveInput.x < 0)
-                movement -= right;
+            
+            movement = forward * _moveInput.y;
+            
+            movement += right * _moveInput.x;
 
             movement.Normalize();
+            
             animator.SetFloat(MovementX, (int) movement.x);
             animator.SetFloat(MovementY, (int) movement.y);
             movement *= (Time.deltaTime * speed);
@@ -308,8 +304,8 @@ public class PlayerController : MonoBehaviour
 
     public void Init()
     {
-        // if (MatchController.GetInstance().SplitScreen)
-        // {
+        if (MatchController.GetInstance().SplitScreen)
+        {
             if (isHome)
             {
                 _playerIndex = 0;
@@ -320,7 +316,7 @@ public class PlayerController : MonoBehaviour
                 _playerIndex = 1;
                 _camera.rect = new Rect(0.5f, 0, 0.5f, 1);
             }
-        // }
+        }
     }
 
     public Camera GetCamera()

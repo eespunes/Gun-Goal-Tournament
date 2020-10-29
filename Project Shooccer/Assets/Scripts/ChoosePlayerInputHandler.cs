@@ -3,23 +3,46 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ChoosePlayerInputHandler : MonoBehaviour, ChoosePlayerInputs.IGameplayActions
 {
     private PlayerInput _playerInput;
     private PlayerController _playerController;
     private float _timeScale;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI playerReadyText;
+
+    [SerializeField] private TextMeshProUGUI playerNameText;
+    [SerializeField] private Image next, previous;
+    [SerializeField] private Sprite[] nextSprites, previousSprites;
+    [SerializeField] private SkinnedMeshRenderer mesh;
 
     private bool _start;
+    private int _index;
+    private string _enter;
 
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        var index = _playerInput.playerIndex;
-        // Debug.Log("PLAYER" + (index + 1));
+        _index = _playerInput.playerIndex;
 
-        ChoosePlayer.Instance.AddPlayerInput(gameObject);
+        playerNameText.text = "PLAYER" + (_index + 1);
+
+        if (_playerInput.user.pairedDevices[0].name.ToLower().Contains("controller"))
+        {
+            _enter = "START";
+            next.sprite = nextSprites[0];
+            previous.sprite = previousSprites[0];
+        }
+        else
+        {
+            _enter = "ENTER";
+            next.sprite = nextSprites[1];
+            previous.sprite = previousSprites[1];
+        }
+
+        UpdatePlayerReadyText();
+        ChoosePlayer.Instance.AddPlayerInput(gameObject, mesh);
     }
 
     public void OnDeviceLost(PlayerInput playerInput)
@@ -32,10 +55,7 @@ public class ChoosePlayerInputHandler : MonoBehaviour, ChoosePlayerInputs.IGamep
     {
         if (context.performed)
         {
-            if (_playerInput.playerIndex == 0)
-                ChoosePlayer.Instance.PreviousHomeKit();
-            else
-                ChoosePlayer.Instance.PreviousAwayKit();
+            ChoosePlayer.Instance.PreviousKit(transform.position);
         }
     }
 
@@ -43,10 +63,7 @@ public class ChoosePlayerInputHandler : MonoBehaviour, ChoosePlayerInputs.IGamep
     {
         if (context.performed)
         {
-            if (_playerInput.playerIndex == 0)
-                ChoosePlayer.Instance.NextHomeKit();
-            else
-                ChoosePlayer.Instance.NextAwayKit();
+            ChoosePlayer.Instance.NextKit(transform.position);
         }
     }
 
@@ -55,7 +72,22 @@ public class ChoosePlayerInputHandler : MonoBehaviour, ChoosePlayerInputs.IGamep
         if (context.performed)
         {
             _start = !_start;
+            UpdatePlayerReadyText();
             ChoosePlayer.Instance.SetStart(_playerInput.playerIndex, _start);
+        }
+    }
+
+    private void UpdatePlayerReadyText()
+    {
+        if (_start)
+        {
+            playerReadyText.text = "READY";
+            playerReadyText.color = Color.green;
+        }
+        else
+        {
+            playerReadyText.text = "PRESS " + _enter + "\nTO PLAY";
+            playerReadyText.color = Color.red;
         }
     }
 }

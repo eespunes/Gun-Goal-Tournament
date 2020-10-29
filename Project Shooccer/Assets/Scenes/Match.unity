@@ -2195,7 +2195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cb482703798e6409dd8ef2452ea5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2176952143116317106, guid: a93a97bd87a0e51468aa147e84f1d622, type: 3}
+  home: {fileID: 2176952143116317106, guid: a93a97bd87a0e51468aa147e84f1d622, type: 3}
+  away: {fileID: 6511447438838962397, guid: 181e6aa31b48cd845bccbccc05f7222e, type: 3}
   ai: {fileID: 1002399272876658745, guid: 1059b396017c9f342a67a9aab5cca644, type: 3}
   isHome: 0
 --- !u!4 &1545648413
@@ -2519,7 +2520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03cb482703798e6409dd8ef2452ea5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2176952143116317106, guid: a93a97bd87a0e51468aa147e84f1d622, type: 3}
+  home: {fileID: 2176952143116317106, guid: a93a97bd87a0e51468aa147e84f1d622, type: 3}
+  away: {fileID: 6511447438838962397, guid: 181e6aa31b48cd845bccbccc05f7222e, type: 3}
   ai: {fileID: 1002399272876658745, guid: 1059b396017c9f342a67a9aab5cca644, type: 3}
   isHome: 1
 --- !u!4 &1797961574

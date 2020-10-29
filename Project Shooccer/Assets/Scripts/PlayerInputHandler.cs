@@ -56,7 +56,7 @@ public class PlayerInputHandler : MonoBehaviour, CharacterInput.IGameplayActions
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
             if (_playerController != null)
                 _playerController.StartShooting();

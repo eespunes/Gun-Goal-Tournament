@@ -101,7 +101,7 @@ public class ChoosePlayer : MonoBehaviour
 
     public void Play()
     {
-        if (!_isSplitScreen)
+        if (_playerInputs.Count == 1)
         {
             int random = Random.Range(0, kits.Count - 1);
             while (random == _homeKitCounter)
@@ -110,7 +110,10 @@ public class ChoosePlayer : MonoBehaviour
             awayMaterial.mainTexture = kits[random];
         }
         else
+        {
             PlayerPrefs.SetInt("Away Kit", _awayKitCounter);
+            _isSplitScreen = true;
+        }
 
         PlayerPrefs.SetInt("Home Kit", _homeKitCounter);
 
@@ -120,11 +123,16 @@ public class ChoosePlayer : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    public void AddPlayerInput(GameObject go)
+    public void AddPlayerInput(GameObject go, SkinnedMeshRenderer mesh)
     {
         if (_playerInputs == null)
             _playerInputs = new List<GameObject>();
         _playerInputs.Add(go);
+
+        if (_playerInputs.Count == 1)
+            mesh.material = homeMaterial;
+        else
+            mesh.material = awayMaterial;
         MovePlayerInputs();
     }
 
@@ -177,5 +185,31 @@ public class ChoosePlayer : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void NextKit(Vector3 position)
+    {
+        if (_playerInputs.Count == 1)
+            NextHomeKit();
+        else
+        {
+            if (_playerInputs[0].transform.position.Equals(position))
+                NextHomeKit();
+            else
+                NextAwayKit();
+        }
+    }
+
+    public void PreviousKit(Vector3 position)
+    {
+        if (_playerInputs.Count == 1)
+            PreviousHomeKit();
+        else
+        {
+            if (_playerInputs[0].transform.position.Equals(position))
+                PreviousHomeKit();
+            else
+                PreviousAwayKit();
+        }
     }
 }

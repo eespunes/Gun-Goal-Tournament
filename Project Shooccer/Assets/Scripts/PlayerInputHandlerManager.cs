@@ -11,13 +11,19 @@ public class PlayerInputHandlerManager : MonoBehaviour
     void Awake()
     {
         _playerInputManager = GetComponent<PlayerInputManager>();
-        if (!MatchController.GetInstance().SplitScreen)
+        if (MatchController.GetInstance().SplitScreen)
         {
             _playerInputManager.EnableJoining();
             _playerInputManager.JoinPlayer();
             _playerInputManager.JoinPlayer();
+            _playerInputManager.DisableJoining();
         }
-        else _playerInputManager.DisableJoining();
+        else
+        {
+            _playerInputManager.EnableJoining();
+            _playerInputManager.JoinPlayer();
+            _playerInputManager.DisableJoining();
+        }
     }
 
     // Update is called once per frame
