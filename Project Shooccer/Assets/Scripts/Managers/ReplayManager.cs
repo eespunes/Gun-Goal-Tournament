@@ -44,4 +44,12 @@ public class ReplayManager : MonoBehaviour
     {
         MatchController.GetInstance().ScoreboardController.ReloadScene();
     }
+
+    public void StopBuffers()
+    {
+        foreach (ReplayBuffer replayBuffer in _replayBuffers)
+        {
+            replayBuffer.CancelInvoke();
+        }
+    }
 }

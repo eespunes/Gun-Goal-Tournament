@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -57,8 +56,8 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // if (MatchController.GetInstance().Playing)
-        // {
+        if (MatchController.GetInstance().Playing)
+        {
             Movement();
 
             if (_fireCounter > fireRate)
@@ -68,9 +67,9 @@ public class AIController : MonoBehaviour
                 _fireCounter = 0;
             }
             else _fireCounter += Time.deltaTime;
-        // }
-        // else
-        //     _agent.SetDestination(transform.position);
+        }
+        else
+            _agent.SetDestination(transform.position);
     }
 
     private void Movement()

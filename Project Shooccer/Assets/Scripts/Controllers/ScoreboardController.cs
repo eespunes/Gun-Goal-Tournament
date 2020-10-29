@@ -16,6 +16,7 @@ public class ScoreboardController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI homeScoreText;
     [SerializeField] private TextMeshProUGUI awayScoreText;
     [SerializeField] private TextMeshProUGUI randomText;
+    [SerializeField] private GameObject splitScreen;
 
     private Animator _animator;
 
@@ -41,6 +42,8 @@ public class ScoreboardController : MonoBehaviour
 
         homeScoreText.text = MatchController.GetInstance().HomeScore.ToString();
         awayScoreText.text = MatchController.GetInstance().AwayScore.ToString();
+        
+        splitScreen.SetActive(MatchController.GetInstance().SplitScreen);
     }
     
 
@@ -138,6 +141,7 @@ public class ScoreboardController : MonoBehaviour
     {
         _animator.SetBool(IsGoal, false);
         _animator.SetBool(IsReplaying, true);
+        splitScreen.SetActive(false);
         randomText.text = "REPLAY";
     }
 }

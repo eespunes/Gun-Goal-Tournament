@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/TitleScreen.unity
     guid: 31b0a34cd12941f45986820e2e8b8e07
   - enabled: 1
-    path: Assets/Scenes/Menus/ChoosePlayer.unity
+    path: Assets/Scenes/Menus/ChoosePlayerScreen.unity
     guid: 9d738435278b1cc41bae3c351a1ea93a
+  - enabled: 1
+    path: Assets/Scenes/Menus/LoadingScreen.unity
+    guid: e01786b09073e79468dc3186ce58c7d2
   - enabled: 1
     path: Assets/Scenes/Match.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
