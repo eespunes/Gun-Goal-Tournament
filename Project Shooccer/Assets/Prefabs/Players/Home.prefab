@@ -88,8 +88,8 @@ MonoBehaviour:
     m_Bits: 256
   maxDistance: 100
   bulletInstantiatePosition: {fileID: 1929736285360627239}
-  impactObject: {fileID: 8261382636396744410, guid: 8de9a9f285f1b4d46b6abba7069f0539, type: 3}
-  fireFlash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+  impactObject: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
+  fireFlash: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   normalFov: 60
   aimFov: 40
   isHome: 0

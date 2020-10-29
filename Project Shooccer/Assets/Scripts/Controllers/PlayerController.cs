@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -205,18 +206,7 @@ public class PlayerController : MonoBehaviour
 
     private void GenerateShootParticles(RaycastHit raycastHit)
     {
-        GameObject go = Instantiate(impactObject, raycastHit.transform);
-        go.transform.parent = null;
-        go.transform.forward = raycastHit.normal;
-        go.transform.position = raycastHit.point;
-
-        foreach (Transform child in go.transform)
-        {
-            if (child.GetComponent<DestroyParticles>())
-            {
-                child.parent = raycastHit.transform;
-            }
-        }
+        Instantiate(impactObject, raycastHit.point,quaternion.identity);
     }
 
     public void Aim()

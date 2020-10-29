@@ -2,13 +2,14 @@
 {
     private static MatchController _instance;
     public float Time { get; set; }
+    public string TimeString { get; set; }
 
     public int HomeScore { get; set; }
     public int AwayScore { get; set; }
 
     public bool Playing { get; set; }
 
-    public ScoreboardController ScoreboardController { private get; set; }
+    public ScoreboardController ScoreboardController { get; set; }
     public bool SplitScreen { get; set; }
 
 
@@ -27,12 +28,12 @@
     public void HomeGoal()
     {
         HomeScore++;
-        ScoreboardController.HomeGoal();
+        ScoreboardController.Goal();
     }
 
     public void AwayGoal()
     {
         AwayScore++;
-        ScoreboardController.AwayGoal();
+        ScoreboardController.Goal();
     }
 }

@@ -64,7 +64,6 @@ public class ReplayBuffer : MonoBehaviour
 
         DestroyComponents();
         _bufferCounter = 0;
-        Debug.Log(1f / ReplayManager.Instance.fps);
         InvokeRepeating(nameof(StartReplay), 0, 1f / ReplayManager.Instance.fps);
     }
 
