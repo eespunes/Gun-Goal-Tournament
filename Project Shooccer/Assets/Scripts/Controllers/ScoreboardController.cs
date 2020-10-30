@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class ScoreboardController : MonoBehaviour
 {
@@ -26,8 +27,12 @@ public class ScoreboardController : MonoBehaviour
     private static readonly int IsEnd = Animator.StringToHash("isEnd");
     private static readonly int IsReplaying = Animator.StringToHash("isReplaying");
 
+    public AudioClip[] AudioClips;
+
     private void Awake()
     {
+        AudioBackgroundManager.Instance.PlayBackgroundMusic(AudioClips[Random.Range(0, AudioClips.Length)]);
+
         MatchController.GetInstance().ScoreboardController = this;
         _animator = GetComponent<Animator>();
         if (MatchController.GetInstance().Time < 0)
@@ -42,14 +47,19 @@ public class ScoreboardController : MonoBehaviour
 
         homeScoreText.text = MatchController.GetInstance().HomeScore.ToString();
         awayScoreText.text = MatchController.GetInstance().AwayScore.ToString();
-        
+
         splitScreen.SetActive(MatchController.GetInstance().SplitScreen);
+        
+        if (_time == 0 && MatchController.GetInstance().HomeScore != MatchController.GetInstance().AwayScore)
+        {
+            EndMatch();
+        }
     }
-    
+
 
     void Update()
     {
-        if (MatchController.GetInstance().Playing)
+        if (MatchController.GetInstance().Playing && _time != 0)
             UpdateTime();
     }
 
@@ -96,7 +106,7 @@ public class ScoreboardController : MonoBehaviour
 
     private void StopTime()
     {
-        if (_time == 0)
+        if (_time == 0 && MatchController.GetInstance().HomeScore != MatchController.GetInstance().AwayScore)
         {
             EndMatch();
         }

@@ -15,6 +15,8 @@ public class ChoosePlayer : MonoBehaviour
     [SerializeField] private GameObject singlePlayerMesh, splitScreenMesh;
     [SerializeField] private Transform[] playerInputPositions;
 
+    public AudioClip[] audioclips;
+
 
     private int _homeKitCounter = 0;
     private int _awayKitCounter;
@@ -101,6 +103,7 @@ public class ChoosePlayer : MonoBehaviour
 
     public void Play()
     {
+        AudioBackgroundManager.Instance.PlayUI(audioclips[4]);
         if (_playerInputs.Count == 1)
         {
             int random = Random.Range(0, kits.Count - 1);
@@ -172,6 +175,11 @@ public class ChoosePlayer : MonoBehaviour
 
     public void SetStart(int i, bool start)
     {
+        if (start)
+            AudioBackgroundManager.Instance.PlayUI(audioclips[2]);
+        else
+            AudioBackgroundManager.Instance.PlayUI(audioclips[3]);
+
         playersReady[i] = start;
         if (AllPlayersReady())
             Play();
@@ -189,6 +197,7 @@ public class ChoosePlayer : MonoBehaviour
 
     public void NextKit(Vector3 position)
     {
+        AudioBackgroundManager.Instance.PlayUI(audioclips[0]);
         if (_playerInputs.Count == 1)
             NextHomeKit();
         else
@@ -202,6 +211,7 @@ public class ChoosePlayer : MonoBehaviour
 
     public void PreviousKit(Vector3 position)
     {
+        AudioBackgroundManager.Instance.PlayUI(audioclips[1]);
         if (_playerInputs.Count == 1)
             PreviousHomeKit();
         else

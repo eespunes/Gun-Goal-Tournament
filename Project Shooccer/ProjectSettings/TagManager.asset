@@ -8,6 +8,9 @@ TagManager:
   - Arena
   - Home Goal
   - Away Goal
+  - FxTemporaire
+  - Goal
+  - Net
   layers:
   - Default
   - TransparentFX

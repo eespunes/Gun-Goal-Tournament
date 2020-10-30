@@ -8,6 +8,8 @@ public class ReplayManager : MonoBehaviour
     public int time;
     private List<ReplayBuffer> _replayBuffers;
     private bool transition;
+    [SerializeField]
+    private AudioClip sound;
 
     public bool Transition => transition;
 
@@ -34,6 +36,7 @@ public class ReplayManager : MonoBehaviour
 
     public void Replay()
     {
+        AudioBackgroundManager.Instance.PlayBackgroundMusic(sound);
         foreach (ReplayBuffer replayBuffer in _replayBuffers)
         {
             replayBuffer.Replay();
