@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Slider = UnityEngine.UIElements.Slider;
 
@@ -56,5 +57,9 @@ public class PauseManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Volume", value);
     }
-    
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
