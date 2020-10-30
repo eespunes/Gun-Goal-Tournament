@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
     [Header("UI")] [SerializeField] private TextMeshProUGUI currentAmmoText;
     [SerializeField] private TextMeshProUGUI totalAmmoText;
     private int _playerIndex;
+    private static readonly int InGround = Animator.StringToHash("inGround");
+    private static readonly int IsReloading = Animator.StringToHash("isReloading");
 
 
     void Awake()
@@ -112,52 +114,53 @@ public class PlayerController : MonoBehaviour
     {
         if (MatchController.GetInstance().Playing)
         {
-            //Pitch
-            float mouseAxisY = _lookInput.y;
-            _pitch += mouseAxisY * pitchRotationalSpeed * Time.deltaTime * PlayerPrefs.GetFloat("Sensibility");
-            _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
-            pitchControllerTransform.localRotation = Quaternion.Euler(_pitch, 0, 0);
+        //Pitch
+        float mouseAxisY = _lookInput.y;
+        _pitch += mouseAxisY * pitchRotationalSpeed * Time.deltaTime * PlayerPrefs.GetFloat("Sensibility");
+        _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+        pitchControllerTransform.localRotation = Quaternion.Euler(_pitch, 0, 0);
 
 
-            //Yaw
-            float mouseAxisX = _yawInversion * _lookInput.x;
-            _yaw += mouseAxisX * yawRotationalSpeed * Time.deltaTime * PlayerPrefs.GetFloat("Sensibility");
-            transform.localRotation = Quaternion.Euler(0, _yaw, 0);
+        //Yaw
+        float mouseAxisX = _yawInversion * _lookInput.x;
+        _yaw += mouseAxisX * yawRotationalSpeed * Time.deltaTime * PlayerPrefs.GetFloat("Sensibility");
+        transform.localRotation = Quaternion.Euler(0, _yaw, 0);
 
-            //Movement
-            Vector3 movement = new Vector3(0, 0, 0);
-            float yawInRadians = _yaw * Mathf.Deg2Rad;
-            float yaw90InRadians = (_yaw + 90.0f) * Mathf.Deg2Rad;
-            Vector3 forward = new Vector3(Mathf.Sin(yawInRadians), 0.0f, Mathf.Cos(yawInRadians));
-            Vector3 right = new Vector3(Mathf.Sin(yaw90InRadians), 0.0f, Mathf.Cos(yaw90InRadians));
-            
-            movement = forward * _moveInput.y;
-            
-            movement += right * _moveInput.x;
+        //Movement
+        Vector3 movement = new Vector3(0, 0, 0);
+        float yawInRadians = _yaw * Mathf.Deg2Rad;
+        float yaw90InRadians = (_yaw + 90.0f) * Mathf.Deg2Rad;
+        Vector3 forward = new Vector3(Mathf.Sin(yawInRadians), 0.0f, Mathf.Cos(yawInRadians));
+        Vector3 right = new Vector3(Mathf.Sin(yaw90InRadians), 0.0f, Mathf.Cos(yaw90InRadians));
 
-            movement.Normalize();
-            
-            animator.SetFloat(MovementX, (int) movement.x);
-            animator.SetFloat(MovementY, (int) movement.y);
-            movement *= (Time.deltaTime * speed);
+        movement = forward * _moveInput.y;
 
-            //Gravity
-            _verticalSpeed += (Physics.gravity.y * 1.5f) * Time.deltaTime;
-            movement.y = _verticalSpeed * Time.deltaTime;
+        movement += right * _moveInput.x;
 
-            movement *= Time.deltaTime * speed * movementSpeedMultiplier;
-            CollisionFlags collisionFlags = _characterController.Move(movement);
-            if ((collisionFlags & CollisionFlags.Below) != 0)
-            {
-                animator.SetBool(IsJumping, false);
-                _onGround = true;
-                _verticalSpeed = 0.0f;
-            }
-            else
-                _onGround = false;
+        movement.Normalize();
 
-            if ((collisionFlags & CollisionFlags.Above) != 0 && _verticalSpeed > 0.0f)
-                _verticalSpeed = 0.0f;
+        animator.SetFloat(MovementX, movement.x);
+        animator.SetFloat(MovementY, movement.y);
+        movement *= (Time.deltaTime * speed);
+
+        //Gravity
+        _verticalSpeed += (Physics.gravity.y * 1.5f) * Time.deltaTime;
+        movement.y = _verticalSpeed * Time.deltaTime;
+
+        movement *= Time.deltaTime * speed * movementSpeedMultiplier;
+        CollisionFlags collisionFlags = _characterController.Move(movement);
+        if ((collisionFlags & CollisionFlags.Below) != 0)
+        {
+            animator.SetBool(IsJumping, false);
+            _onGround = true;
+            _verticalSpeed = 0.0f;
+        }
+        else
+            _onGround = false;
+
+        if ((collisionFlags & CollisionFlags.Above) != 0 && _verticalSpeed > 0.0f)
+            _verticalSpeed = 0.0f;
+        animator.SetBool(InGround, _onGround);
         }
     }
 
@@ -165,48 +168,49 @@ public class PlayerController : MonoBehaviour
     {
         if (MatchController.GetInstance().Playing)
         {
-            if (_currentAmmo > 0)
-            {
-                _currentAmmo--;
-                currentAmmoText.text = _currentAmmo.ToString();
-                animator.SetBool(HasNoAmmo, false);
-                Ray cameraRay;
+        if (_currentAmmo > 0 && !animator.GetBool(IsReloading))
+        {
+            _currentAmmo--;
+            currentAmmoText.text = _currentAmmo.ToString();
+            animator.SetBool(HasNoAmmo, false);
+            Ray cameraRay;
 
-                if (animator.GetBool(IsAiming))
-                    cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
-                else
-                {
-                    cameraRay = _camera.ViewportPointToRay(new Vector3(Random.Range(.425f, .5f),
-                        Random.Range(.425f, .5f),
-                        0.0f));
-                }
-
-                RaycastHit raycastHit;
-                Instantiate(fireFlash, bulletInstantiatePosition);
-                animator.SetBool(IsShooting, true);
-                if (Physics.Raycast(cameraRay, out raycastHit, maxDistance * bulletDistanceMultiplier,
-                    shootLayerMask.value))
-                {
-                    GenerateShootParticles(raycastHit);
-                    switch (raycastHit.collider.tag)
-                    {
-                        case "Ball":
-                            raycastHit.collider.GetComponent<BallController>()
-                                .MoveBall(raycastHit.point, ballInfluenceMultiplier);
-                            break;
-                    }
-                }
-            }
+            if (animator.GetBool(IsAiming))
+                cameraRay = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
             else
             {
-                animator.SetBool(HasNoAmmo, true);
+                cameraRay = _camera.ViewportPointToRay(new Vector3(Random.Range(.425f, .5f),
+                    Random.Range(.425f, .5f),
+                    0.0f));
             }
+
+            RaycastHit raycastHit;
+            Instantiate(fireFlash, bulletInstantiatePosition);
+            animator.SetBool(IsShooting, true);
+            if (Physics.Raycast(cameraRay, out raycastHit, maxDistance * bulletDistanceMultiplier,
+                shootLayerMask.value))
+            {
+                GenerateShootParticles(raycastHit);
+                switch (raycastHit.collider.tag)
+                {
+                    case "Ball":
+                        raycastHit.collider.GetComponent<BallController>()
+                            .MoveBall(raycastHit.point, ballInfluenceMultiplier);
+                        break;
+                }
+            }
+        }
+        else
+        {
+            animator.SetBool(HasNoAmmo, true);
+        }
+
         }
     }
 
     private void GenerateShootParticles(RaycastHit raycastHit)
     {
-        Instantiate(impactObject, raycastHit.point,quaternion.identity);
+        Instantiate(impactObject, raycastHit.point, quaternion.identity);
     }
 
     public void Aim()
@@ -214,12 +218,16 @@ public class PlayerController : MonoBehaviour
         _camera.fieldOfView = Mathf.Max(aimFov, _camera.fieldOfView - 75 * Time.deltaTime * aimSpeed);
 
         if (_camera.fieldOfView == aimFov)
+        {
             CancelInvoke("Aim");
+        }
     }
 
     public void Deaim()
     {
         _camera.fieldOfView = Mathf.Min(normalFov, _camera.fieldOfView + 75 * Time.deltaTime * aimSpeed);
+        animator.SetBool("holdAiming", false);
+        
         if (_camera.fieldOfView == normalFov)
             CancelInvoke("Deaim");
     }
@@ -278,6 +286,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_currentAmmo != ammoPerMagazine)
         {
+            animator.SetTrigger(IsReloading);
             _totalAmmo = Math.Max(0, _totalAmmo - (ammoPerMagazine - _currentAmmo));
             _currentAmmo = ammoPerMagazine;
             currentAmmoText.text = _currentAmmo.ToString();
