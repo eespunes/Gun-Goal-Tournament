@@ -52,6 +52,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AnimationEvent.cs" t="Include" />
           <e p="ChoosePlayerInputHandler.cs" t="Include" />
           <e p="ChoosePlayerInputHandlerManager.cs" t="Include" />
           <e p="Controllers" t="Include">
