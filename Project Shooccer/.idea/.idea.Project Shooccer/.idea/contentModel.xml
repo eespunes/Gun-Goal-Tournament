@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Uni\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Uni\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Project Shooccer.-699913709.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Uni\Documents\Project-Shooccer\Project Shooccer" t="IncludeRecursive">
+    <e p="C:\Users\erike\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\erike\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Project Shooccer.-384510502.00" t="ExcludeRecursive" />
+    <e p="E:\Github Projects\Indie Dev Day Jam 2020\Project Shooccer" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -13,12 +13,6 @@
           <e p="ChoosePlayerInputs.cs" t="Include" />
         </e>
         <e p="Plugins" t="Include">
-          <e p="Cool Visual Effects - Part 1" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="ConstantRotation.cs" t="Include" />
-              <e p="EffectManager.cs" t="Include" />
-            </e>
-          </e>
           <e p="JMO Assets" t="Include">
             <e p="Cartoon FX" t="Include">
               <e p="CartoonFX Free.txt" t="Include" />
@@ -52,9 +46,15 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Ammo.cs" t="Include" />
           <e p="AnimationEvent.cs" t="Include" />
-          <e p="ChoosePlayerInputHandler.cs" t="Include" />
-          <e p="ChoosePlayerInputHandlerManager.cs" t="Include" />
+          <e p="Audio" t="Include">
+            <e p="AudioBackgroundManager.cs" t="Include" />
+            <e p="AudioSourceCrossfade.cs" t="Include" />
+            <e p="PlayRandomSoundParticle.cs" t="Include" />
+            <e p="PlaySoundParticle.cs" t="Include" />
+          </e>
+          <e p="Boost.cs" t="Include" />
           <e p="Controllers" t="Include">
             <e p="AIController.cs" t="Include" />
             <e p="BallController.cs" t="Include" />
@@ -64,8 +64,14 @@
             <e p="PlayerController.cs" t="Include" />
             <e p="ScoreboardController.cs" t="Include" />
           </e>
-          <e p="DestroyParticles.cs" t="Include" />
+          <e p="Dispenser.cs" t="Include" />
           <e p="Goal.cs" t="Include" />
+          <e p="Inputs" t="Include">
+            <e p="ChoosePlayerInputHandler.cs" t="Include" />
+            <e p="ChoosePlayerInputHandlerManager.cs" t="Include" />
+            <e p="PlayerInputHandler.cs" t="Include" />
+            <e p="PlayerInputHandlerManager.cs" t="Include" />
+          </e>
           <e p="InstantiatePlayer.cs" t="Include" />
           <e p="Managers" t="Include">
             <e p="PauseManager.cs" t="Include" />
@@ -76,8 +82,6 @@
             <e p="Loading.cs" t="Include" />
             <e p="TitleScreen.cs" t="Include" />
           </e>
-          <e p="PlayerInputHandler.cs" t="Include" />
-          <e p="PlayerInputHandlerManager.cs" t="Include" />
           <e p="ReplayBuffer.cs" t="Include" />
           <e p="ScoreboardCopy.cs" t="Include" />
         </e>

@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -7,6 +8,9 @@ public class BallController : MonoBehaviour
     private Rigidbody _rigidBody;
     [SerializeField] private float ballForce;
     [HideInInspector] public float maxDistanceY;
+
+
+    [SerializeField] private GameObject crossbar, net, floor;
 
     private void Awake()
     {
@@ -27,5 +31,22 @@ public class BallController : MonoBehaviour
     {
         return true;
         // return Physics.Raycast(transform.position, -Vector3.up, transform.localScale.x + 0.1f);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (MatchController.GetInstance().Playing)
+            switch (other.collider.tag)
+            {
+                case "Goal":
+                    Instantiate(crossbar, other.contacts[0].point, quaternion.identity);
+                    break;
+                case "Net":
+                    Instantiate(net, other.contacts[0].point, quaternion.identity);
+                    break;
+                default:
+                    Instantiate(floor, other.contacts[0].point, quaternion.identity);
+                    break;
+            }
     }
 }
