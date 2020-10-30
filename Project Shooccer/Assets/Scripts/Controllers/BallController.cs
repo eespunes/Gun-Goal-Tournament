@@ -43,6 +43,7 @@ public class BallController : MonoBehaviour
                     break;
                 case "Net":
                     Instantiate(net, other.contacts[0].point, quaternion.identity);
+                    _rigidBody.velocity=Vector3.zero;
                     break;
                 default:
                     Instantiate(floor, other.contacts[0].point, quaternion.identity);

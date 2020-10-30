@@ -556,6 +556,14 @@ MonoBehaviour:
   awayScoreText: {fileID: 5902809384647548710}
   randomText: {fileID: 5902809383762777754}
   splitScreen: {fileID: 0}
+  AudioClips:
+  - {fileID: 8300000, guid: 1852d8ed893a66a41b048e5dff02ae0f, type: 3}
+  - {fileID: 8300000, guid: ab9665a6be3c9624ab5f286466a6e8f4, type: 3}
+  - {fileID: 8300000, guid: 62a933b7aa47c744da7695f51906d1d8, type: 3}
+  - {fileID: 8300000, guid: ac07b14a7b27e9b479eab093324bd93c, type: 3}
+  - {fileID: 8300000, guid: f6c25a7b0499d574fa094d46e3ce5629, type: 3}
+  - {fileID: 8300000, guid: e27742ed413c56543a6033e14dd9ea56, type: 3}
+  - {fileID: 8300000, guid: baac73a587f38ac439f94115b8c93845, type: 3}
 --- !u!114 &5902809384395161122
 MonoBehaviour:
   m_ObjectHideFlags: 0

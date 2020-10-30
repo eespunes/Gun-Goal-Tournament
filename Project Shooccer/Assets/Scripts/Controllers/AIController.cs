@@ -172,7 +172,7 @@ public class AIController : MonoBehaviour
         if (_currentAmmo != ammoPerMagazine)
         {
             animator.SetTrigger(IsReloading);
-            _totalAmmo = Math.Max(0, _totalAmmo - (ammoPerMagazine - _currentAmmo));
+            // _totalAmmo = Math.Max(0, _totalAmmo - (ammoPerMagazine - _currentAmmo));
             _currentAmmo = ammoPerMagazine;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -11,11 +12,11 @@ public class PauseManager : MonoBehaviour
 {
     private bool _paused = false;
     [SerializeField] GameObject pauseCanvas, optionsCanvas;
-    [SerializeField] private Scrollbar volumeSlider, sensitivitySlider;
+    [SerializeField] private Scrollbar sensitivitySlider;
 
+    private Transform _parent;
 
-
-    void Pause()
+    public void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -38,8 +39,17 @@ public class PauseManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
 
+        // if(_parent==null)
+        // {
+        //     _parent = transform.parent;
+        //     while (_parent.parent!=null)
+        //     {
+        //         _parent = transform.parent;
+        //     }
+        //     Debug.Log(_parent.gameObject);
+        // }
+        
         sensitivitySlider.value = PlayerPrefs.GetFloat("Sensibility") - .5f;
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
     }
 
     public void ReturnFromOptions()
@@ -51,11 +61,6 @@ public class PauseManager : MonoBehaviour
     public void ChangeSensibility(float value)
     {
         PlayerPrefs.SetFloat("Sensibility", 1 + (value - .5f));
-    }
-
-    public void ChangeVolume(float value)
-    {
-        PlayerPrefs.SetFloat("Volume", value);
     }
 
     public void ReturnToMainMenu()

@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
     [Header("Audio")] [SerializeField] private AudioSource audioSource;
 
     [SerializeField] private AudioClip jumpLand;
+    private PauseManager _pauseManager;
 
 
     void Awake()
@@ -109,6 +110,8 @@ public class PlayerController : MonoBehaviour
 
         if (PlayerPrefs.GetFloat("Sensibility") == 0)
             PlayerPrefs.SetFloat("Sensibility", 1);
+
+        _pauseManager = GetComponent<PauseManager>();
     }
 
     // Update is called once per frame
@@ -347,5 +350,10 @@ public class PlayerController : MonoBehaviour
         if (_totalAmmo > maxAmmo)
             _totalAmmo = maxAmmo;
         totalAmmoText.text = _totalAmmo.ToString();
+    }
+
+    public void Pause()
+    {
+        _pauseManager.Pause();
     }
 }

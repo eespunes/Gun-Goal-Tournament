@@ -24,7 +24,6 @@ public class PlayerInputHandler : MonoBehaviour, CharacterInput.IGameplayActions
         var index = _playerInput.playerIndex;
         text.text = "PLAYER" + (index + 1);
         _playerController = playerControllers.FirstOrDefault(p => p.GetPlayerIndex() == index);
-        _playerInput.camera = _playerController.GetCamera();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -103,13 +102,13 @@ public class PlayerInputHandler : MonoBehaviour, CharacterInput.IGameplayActions
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        // if (context.performed)
-        // {
-        //     if (_playerController != null)
-        //         _playerController.Pause();
-        //     else
-        //         FindPlayerController();
-        // }
+        if (context.performed)
+        {
+            if (_playerController != null)
+                _playerController.Pause();
+            else
+                FindPlayerController();
+        }
     }
 
     public void OnDeviceLost(PlayerInput playerInput)
