@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 using Random = UnityEngine.Random;
 
 public class ScoreboardController : MonoBehaviour
@@ -20,6 +21,7 @@ public class ScoreboardController : MonoBehaviour
     [SerializeField] private GameObject splitScreen;
 
     private Animator _animator;
+    private VideoPlayer _videoPlayer;
 
     public Animator Animator => _animator;
 
@@ -28,6 +30,7 @@ public class ScoreboardController : MonoBehaviour
     private static readonly int IsReplaying = Animator.StringToHash("isReplaying");
 
     public AudioClip[] AudioClips;
+    [SerializeField] private VideoClip[] videos;
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class ScoreboardController : MonoBehaviour
 
         MatchController.GetInstance().ScoreboardController = this;
         _animator = GetComponent<Animator>();
+        _videoPlayer = GetComponent<VideoPlayer>();
         if (MatchController.GetInstance().Time < 0)
         {
             {
@@ -49,7 +53,7 @@ public class ScoreboardController : MonoBehaviour
         awayScoreText.text = MatchController.GetInstance().AwayScore.ToString();
 
         splitScreen.SetActive(MatchController.GetInstance().SplitScreen);
-        
+
         if (_time == 0 && MatchController.GetInstance().HomeScore != MatchController.GetInstance().AwayScore)
         {
             EndMatch();
@@ -145,6 +149,34 @@ public class ScoreboardController : MonoBehaviour
         MatchController.GetInstance().Playing = false;
         MatchController.GetInstance().Time = _time;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void IntroVideo()
+    {
+        _videoPlayer.clip = videos[0];
+        _videoPlayer.Play();
+    }
+
+    public void LoopVideo()
+    {
+        _videoPlayer.clip = videos[1];
+        _videoPlayer.Play();
+    }
+    
+    public void GoalVideo()
+    {
+        _videoPlayer.clip = videos[2];
+        _videoPlayer.Play();
+    }
+    public void ReplayVideo()
+    {
+        _videoPlayer.clip = videos[3];
+        _videoPlayer.Play();
+    }
+    public void EndVideo()
+    {
+        _videoPlayer.clip = videos[4];
+        _videoPlayer.Play();
     }
 
     public void StartReplay()
